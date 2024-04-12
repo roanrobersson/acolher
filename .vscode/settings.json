@@ -1,0 +1,39 @@
+{
+	"editor.formatOnSave": true,
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"explorer.compactFolders": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSaveMode": "file",
+	"editor.rulers": [80],
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit"
+	},
+
+	"conventionalCommits.promptBody": false,
+	"conventionalCommits.showNewVersionNotes": false,
+	"conventionalCommits.promptFooter": false,
+	"conventionalCommits.promptScopes": false,
+	"conventionalCommits.promptCI": false,
+
+	"jest.autoRun": "off",
+
+	"files.exclude": {
+		"node_modules": true,
+		".prettierignore": true,
+		".prettierrc.json": true,
+		".eslintignore": true,
+		".eslintrc.json": true,
+		".gitignore": true,
+		"tsconfig.json": true,
+		".next": true,
+		"next-env.d.ts": true,
+		"next.config.*": true,
+		"svgr.d.ts": true,
+		"README.md": true,
+		".env.local": true,
+		"package-lock.json": true,
+		"postcss.config.*": true
+	}
+}
