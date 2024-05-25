@@ -26,14 +26,13 @@
 		".eslintignore": true,
 		".eslintrc.json": true,
 		".gitignore": true,
-		"tsconfig.json": true,
 		".next": true,
 		"next-env.d.ts": true,
-		"next.config.*": true,
+		// "next.config.*": true,
 		"svgr.d.ts": true,
 		"README.md": true,
-		".env.local": true,
-		"package-lock.json": true,
-		"postcss.config.*": true
+		".env.local": true
+		// "package-lock.json": true,
+		// "postcss.config.*": true
 	}
 }
