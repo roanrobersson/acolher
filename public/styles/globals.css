@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
+@layer base {
+	* {
+		box-sizing: border-box;
+	}
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@layer components {
+	.fluid-container {
+		@apply px-7 lg:container min-[1052px]:px-0 min-[1280px]:px-7 min-[1308px]:px-0;
+	}
 }
