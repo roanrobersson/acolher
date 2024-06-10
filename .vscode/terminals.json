@@ -1,0 +1,16 @@
+{
+	"autorun": true,
+	"autokill": true,
+	"terminals": [
+		{
+			"name": "Acolher",
+			"icon": "code",
+			"color": "terminal.ansiCyan"
+		},
+		{
+			"name": "Acolher - GIT",
+			"icon": "mark-github",
+			"color": "terminal.ansiCyan"
+		}
+	]
+}
