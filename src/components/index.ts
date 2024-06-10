@@ -7,3 +7,4 @@ export { default as Input } from "./Input";
 export { default as Link } from "./Link";
 export { default as PageTitle } from "./PageTitle";
 export { default as Portal, PortalRoot } from "./Portal";
+export { default as ProfessionalCard } from "./ProfessionalCard";
