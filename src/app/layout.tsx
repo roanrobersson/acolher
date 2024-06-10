@@ -1,5 +1,7 @@
 import { Figtree } from "next/font/google";
 
+import { PortalRoot } from "components";
+
 import type { Metadata } from "next";
 
 import "public/styles/globals.css";
@@ -19,6 +21,8 @@ const RootLayout = ({
 	return (
 		<html lang="pt-BR">
 			<body className={figtree.className}>{children}</body>
+
+			<PortalRoot />
 		</html>
 	);
 };
