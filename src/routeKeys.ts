@@ -3,7 +3,7 @@ type RouteKeys = Record<string, () => string>;
 const routeKeys = {
 	home: () => "/",
 	services: () => "/our-services",
-	professionals: () => "/our-professionals",
+	professionals: () => "/professionals",
 	blog: () => "/blog",
 	carreer: () => "/carreer",
 	about: () => "/about",

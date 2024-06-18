@@ -14,7 +14,10 @@ const ProfessionalCard: FC<ProfessionalCardProps> = ({
 	...restProps
 }) => (
 	<div
-		className={combineClasses("group relative p-4 text-center", className)}
+		className={combineClasses(
+			"group relative px-4 pb-4 text-center",
+			className
+		)}
 		{...restProps}
 	>
 		<div className="absolute bottom-0 left-0 right-0 top-[60px] bg-white px-4 dark:bg-dark-gray-800" />
