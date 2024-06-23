@@ -1,5 +1,6 @@
 export { default as Brand } from "./Brand";
 export { default as Button } from "./Button";
+export * from "./Dialog";
 export * from "./Drawer";
 export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";
