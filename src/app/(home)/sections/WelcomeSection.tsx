@@ -3,6 +3,7 @@ import SearchIcon from "public/icons/outline/search.svg";
 import TargetIcon from "public/icons/outline/target.svg";
 
 import { Button, Input } from "components";
+import AppointmentModal from "components/AppointmentModal";
 import { combineClasses } from "utils/tailwind";
 
 const WelcomeSection: FC<ComponentProps<"div">> = ({
@@ -39,14 +40,16 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 			</h1>
 
 			<div className="mt-5 flex flex-col gap-3 sm:flex-row lg:mt-8">
-				<Button
-					className="flex-1 md:flex-initial"
-					color="primary"
-					variant="solid"
-					size="lg"
-				>
-					Make appointment
-				</Button>
+				<AppointmentModal>
+					<Button
+						className="flex-1 md:flex-initial"
+						color="primary"
+						variant="solid"
+						size="lg"
+					>
+						Make appointment
+					</Button>
+				</AppointmentModal>
 
 				<Button
 					className="flex-1 md:flex-initial lg:hidden"
