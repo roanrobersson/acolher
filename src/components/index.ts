@@ -11,3 +11,4 @@ export * from "./Modal";
 export { default as PageTitle } from "./PageTitle";
 export { default as Portal, PortalRoot } from "./Portal";
 export { default as ProfessionalCard } from "./ProfessionalCard";
+export { default as Switch } from "./Switch";
