@@ -10,6 +10,8 @@ import type { Metadata } from "next";
 
 import "public/styles/globals.css";
 
+import Script from "next/script";
+
 const PlusJakartaSansFont = Plus_Jakarta_Sans({
 	subsets: ["latin"],
 	variable: "--font-plus-jakarta-sans"
@@ -44,6 +46,7 @@ const RootLayout = ({
 				<link rel="icon" sizes="32x32" href="/favicon/favicon-32.ico" />
 				<link rel="icon" sizes="128x128" href="/favicon/favicon-128.ico" />
 				<link rel="icon" sizes="256x256" href="/favicon/favicon-256.ico" />
+				<Script id="dark-mode" src="scripts/darkModeScript.js" />
 			</head>
 
 			<body

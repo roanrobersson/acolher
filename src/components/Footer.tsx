@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, SVGProps } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,11 +14,13 @@ import TwitterIcon from "public/icons/solid/twitter.svg";
 import ArtifactsImage from "public/images/artifacts.png";
 import rk from "routeKeys";
 
+import { useDarkMode } from "hooks";
 import { combineClasses } from "utils/tailwind";
 
 import Brand from "./Brand";
 import Button from "./Button";
 import Input from "./Input";
+import Switch from "./Switch";
 
 type Item = {
 	id: string;
@@ -43,6 +47,8 @@ const socialItems: Array<Item> = [
 ];
 
 const Footer: FC = () => {
+	const { value, enable, disable } = useDarkMode();
+
 	return (
 		<footer className="relative pt-[120px]">
 			{/* Feed */}
@@ -96,7 +102,12 @@ const Footer: FC = () => {
 							</address>
 							<div className="mt-10 flex gap-2 text-light-blue-300">
 								<LightModeIcon width={24} height={24} />
-								<input type="checkbox" />
+								<Switch
+									checked={value}
+									onCheckedChange={(checked) => {
+										checked ? enable() : disable();
+									}}
+								/>
 								<DarkModeIcon width={24} height={24} />
 							</div>
 						</div>
