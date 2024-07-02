@@ -14,7 +14,7 @@ export const NavbarContext = createContext({} as NavbarContextType);
 type NavbarProps = ComponentProps<"div">;
 
 const Navbar: FC<NavbarProps> = ({ className, children, ...restProps }) => {
-	const { sticky, refHandler } = useSticky();
+	const { sticky, refHandler } = useSticky({ debounce: 100 });
 	const heigthClass = "h-[78px] lg:h-[80px]";
 
 	return (

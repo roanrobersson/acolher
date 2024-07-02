@@ -1,14 +1,25 @@
 import { useLayoutEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
-const useScrollY = (callback?: (scrollY: number) => void) => {
+type UseScrollYOptions = {
+	/** A callback that will be called when the scrollY changes */
+	callback?: (scrollY: number) => void;
+	/**
+	 * The debounce time in milliseconds
+	 * default: 0
+	 */
+	debounce?: number;
+};
+
+const useScrollY = ({ callback, debounce = 0 }: UseScrollYOptions = {}) => {
 	const [scrollY, setScrollY] = useState(0);
 
-	useLayoutEffect(() => {
-		const handleScroll = () => {
-			callback?.(window.scrollY);
-			setScrollY(window.scrollY);
-		};
+	const handleScroll = useDebouncedCallback(() => {
+		setScrollY(window.scrollY);
+		callback?.(window.scrollY);
+	}, debounce);
 
+	useLayoutEffect(() => {
 		handleScroll();
 
 		window.addEventListener("scroll", handleScroll);
@@ -16,7 +27,7 @@ const useScrollY = (callback?: (scrollY: number) => void) => {
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, []);
+	}, [handleScroll]);
 
 	return scrollY;
 };
