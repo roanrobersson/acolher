@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import { Footer, Header, PageTitle } from "components";
+import { Footer, Header, PageTitle } from "components/layout";
 
 type OurServicesLayoutProps = {
 	children: ReactNode;

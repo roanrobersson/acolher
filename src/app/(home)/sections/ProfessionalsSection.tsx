@@ -1,7 +1,8 @@
 import { ComponentProps, FC } from "react";
 import professionalList from "professionalList";
 
-import { Button, ProfessionalCard } from "components";
+import { ProfessionalCard } from "components";
+import { Button } from "components/core";
 import { combineClasses } from "utils/tailwind";
 
 const ProfessionalsSection: FC<ComponentProps<"div">> = ({

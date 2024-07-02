@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import { Footer, Header } from "components";
+import { Footer, Header } from "components/layout";
 
 type HomeLayoutProps = {
 	children: ReactNode;

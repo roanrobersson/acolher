@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import ArtifactsImage from "public/images/artifacts.png";
 
-import { PortalRoot } from "components";
 import { combineClasses } from "utils/tailwind";
 
 import type { Metadata } from "next";
@@ -61,8 +60,6 @@ const RootLayout = ({
 				<ArtifactsBackground />
 
 				{children}
-
-				<PortalRoot />
 			</body>
 		</html>
 	);

@@ -1,4 +1,5 @@
-import { Footer, Header, Link } from "components";
+import { Link } from "components/core";
+import { Footer, Header } from "components/layout";
 
 const NotFoundPage = () => {
 	return (

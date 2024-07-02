@@ -5,7 +5,7 @@ import Image2 from "public/images/blog/2.png";
 import Image3 from "public/images/blog/3.png";
 import Image5 from "public/images/blog/5.png";
 
-import { Button, Link } from "components";
+import { Button, Link } from "components/core";
 import { combineClasses } from "utils/tailwind";
 
 type Item = {

@@ -2,8 +2,8 @@ import { ComponentProps, FC } from "react";
 import SearchIcon from "public/icons/outline/search.svg";
 import TargetIcon from "public/icons/outline/target.svg";
 
-import { Button, Input } from "components";
 import AppointmentModal from "components/AppointmentModal";
+import { Button, Input } from "components/core";
 import { combineClasses } from "utils/tailwind";
 
 const WelcomeSection: FC<ComponentProps<"div">> = ({

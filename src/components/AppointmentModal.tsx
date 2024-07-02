@@ -14,7 +14,7 @@ import {
 	ModalProps,
 	ModalTitle,
 	ModalTrigger
-} from "components";
+} from "components/core";
 
 type AppointmentModalProps = ModalProps;
 

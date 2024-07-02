@@ -17,10 +17,10 @@ import rk from "routeKeys";
 import { useDarkMode } from "hooks";
 import { combineClasses } from "utils/tailwind";
 
+import Button from "../core/Button";
+import Input from "../core/Input";
+import Switch from "../core/Switch";
 import Brand from "./Brand";
-import Button from "./Button";
-import Input from "./Input";
-import Switch from "./Switch";
 
 type Item = {
 	id: string;

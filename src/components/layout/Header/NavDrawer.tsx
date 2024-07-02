@@ -5,7 +5,6 @@ import SearchIcon from "public/icons/outline/search.svg";
 import rk from "routeKeys";
 
 import {
-	Brand,
 	Drawer,
 	DrawerClose,
 	DrawerContent,
@@ -16,7 +15,8 @@ import {
 	IconButton,
 	Input,
 	Link
-} from "components";
+} from "components/core";
+import { Brand } from "components/layout";
 
 export type NavDrawerProps = DrawerProps;
 
