@@ -4,6 +4,7 @@ import CloseIcon from "public/icons/outline/close.svg";
 import {
 	IconButton,
 	Input,
+	Label,
 	Modal,
 	ModalAction,
 	ModalCancel,
@@ -13,8 +14,12 @@ import {
 	ModalHeader,
 	ModalProps,
 	ModalTitle,
-	ModalTrigger
+	ModalTrigger,
+	RadioGroup,
+	RadioGroupItem,
+	Textarea
 } from "components/core";
+import { combineClasses } from "utils/tailwind";
 
 type AppointmentModalProps = ModalProps;
 
@@ -38,7 +43,20 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 					</ModalDescription>
 				</ModalHeader>
 
-				<Input placeholder="First name" size="lg" />
+				<RadioGroup
+					defaultValue="option-one"
+					className="flex justify-center gap-8 lg:gap-12"
+				>
+					<div className={combineClasses("flex items-center gap-4")}>
+						<RadioGroupItem value="option-one" id="option-one" />
+						<Label htmlFor="option-one">New Patient</Label>
+					</div>
+
+					<div className="flex items-center gap-4">
+						<RadioGroupItem value="option-two" id="option-two" />
+						<Label htmlFor="option-two">Returning Patient</Label>
+					</div>
+				</RadioGroup>
 
 				<div>
 					<h2 className="text-sectiontitle-md uppercase text-gray-500">
@@ -84,12 +102,12 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 							placeholder="Select Doctor"
 							size="lg"
 						/>
-						<Input
-							id="message"
+
+						<Textarea
+							id="messages"
 							label="Messages"
 							placeholder="Messages"
 							className="col-span-2"
-							size="lg"
 						/>
 					</div>
 				</div>
