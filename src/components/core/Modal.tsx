@@ -1,28 +1,30 @@
 "use client";
 
-import {
-	ComponentPropsWithoutRef,
-	ElementRef,
-	FC,
-	forwardRef,
-	HTMLAttributes
-} from "react";
+import { ElementRef, FC, forwardRef, HTMLAttributes } from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { combineClasses } from "utils/tailwind";
 
-import Button from "./Button";
+import { Button } from "./Button";
 
-import type { AlertDialogProps } from "@radix-ui/react-alert-dialog";
-
-export type ModalProps = AlertDialogProps;
+import type {
+	AlertDialogActionProps as ModalActionProps,
+	AlertDialogCancelProps as ModalCancelProps,
+	AlertDialogContentProps as ModalContentProps,
+	AlertDialogDescriptionProps as ModalDescriptionProps,
+	AlertDialogOverlayProps as ModalOverlayProps,
+	AlertDialogPortalProps as ModalPortalProps,
+	AlertDialogProps as ModalProps,
+	AlertDialogTitleProps as ModalTitleProps,
+	AlertDialogTriggerProps as ModalTriggerProps
+} from "@radix-ui/react-alert-dialog";
 
 const Modal = AlertDialogPrimitive.Root;
 Modal.displayName = "Modal";
 
 const ModalTrigger = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Trigger>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Trigger>
+	ModalTriggerProps
 >(({ children, ...restProps }, ref) => {
 	if (Array.isArray(children)) {
 		throw new Error("ModalTrigger must only contain a single child.");
@@ -36,12 +38,12 @@ const ModalTrigger = forwardRef<
 });
 ModalTrigger.displayName = "ModalTrigger";
 
-const ModalPortal = AlertDialogPrimitive.Portal;
+const ModalPortal: FC<ModalPortalProps> = AlertDialogPrimitive.Portal;
 ModalPortal.displayName = "ModalPortal";
 
 const ModalOverlay = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Overlay>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
+	ModalOverlayProps
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Overlay
 		className={combineClasses(
@@ -58,7 +60,7 @@ ModalOverlay.displayName = "ModalOverlay";
 
 const ModalContent = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Content>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
+	ModalContentProps
 >(({ className, ...props }, ref) => (
 	<ModalPortal>
 		<ModalOverlay />
@@ -79,10 +81,9 @@ const ModalContent = forwardRef<
 ));
 ModalContent.displayName = "ModalContent";
 
-const ModalHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type ModalHeaderProps = HTMLAttributes<HTMLDivElement>;
+
+const ModalHeader: FC<ModalHeaderProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses(
 			"flex flex-col gap-8 text-center sm:text-left lg:gap-y-11",
@@ -93,10 +94,9 @@ const ModalHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
 );
 ModalHeader.displayName = "ModalHeader";
 
-const ModalFooter: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type ModalFooterProps = HTMLAttributes<HTMLDivElement>;
+
+const ModalFooter: FC<ModalFooterProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses(
 			"flex flex-col-reverse gap-2 lg:flex-row lg:justify-end lg:gap-6",
@@ -109,7 +109,7 @@ ModalFooter.displayName = "ModalFooter";
 
 const ModalTitle = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Title>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
+	ModalTitleProps
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Title
 		ref={ref}
@@ -121,7 +121,7 @@ ModalTitle.displayName = "ModalTitle";
 
 const ModalDescription = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Description>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
+	ModalDescriptionProps
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Description
 		ref={ref}
@@ -133,7 +133,7 @@ ModalDescription.displayName = "ModalDescription";
 
 const ModalAction = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Action>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
+	ModalActionProps
 >(({ children, asChild, ...restProps }, ref) => (
 	<AlertDialogPrimitive.Action ref={ref} asChild {...restProps}>
 		{asChild ? children : <Button size="lg">{children}</Button>}
@@ -143,7 +143,7 @@ ModalAction.displayName = "ModalAction";
 
 const ModalCancel = forwardRef<
 	ElementRef<typeof AlertDialogPrimitive.Cancel>,
-	ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
+	ModalCancelProps
 >(({ children, asChild, ...restProps }, ref) => (
 	<AlertDialogPrimitive.Cancel asChild ref={ref} {...restProps}>
 		{asChild ? (
@@ -169,4 +169,18 @@ export {
 	ModalPortal,
 	ModalTitle,
 	ModalTrigger
+};
+
+export type {
+	ModalActionProps,
+	ModalCancelProps,
+	ModalContentProps,
+	ModalDescriptionProps,
+	ModalFooterProps,
+	ModalHeaderProps,
+	ModalOverlayProps,
+	ModalPortalProps,
+	ModalProps,
+	ModalTitleProps,
+	ModalTriggerProps
 };

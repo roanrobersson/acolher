@@ -6,8 +6,7 @@ import { usePathname } from "next/navigation";
 import HamburguerIcon from "public/icons/outline/hamburguer.svg";
 import rk from "routeKeys";
 
-import { Link, Navbar } from "components/core";
-import IconButton from "components/core/IconButton";
+import { IconButton, Link, Navbar } from "components/core";
 import { NavbarContext } from "components/core/Navbar";
 import { Brand } from "components/layout";
 

@@ -14,12 +14,10 @@ import TwitterIcon from "public/icons/solid/twitter.svg";
 import ArtifactsImage from "public/images/artifacts.png";
 import rk from "routeKeys";
 
+import { Button, Input, Switch } from "components/core";
 import { useDarkMode } from "hooks";
 import { combineClasses } from "utils/tailwind";
 
-import Button from "../core/Button";
-import Input from "../core/Input";
-import Switch from "../core/Switch";
 import Brand from "./Brand";
 
 type Item = {

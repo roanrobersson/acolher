@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from "react";
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
@@ -7,7 +7,7 @@ import { combineClasses } from "utils/tailwind";
 
 import type { VariantProps } from "class-variance-authority";
 
-export const buttonVariants = cva(
+const buttonVariants = cva(
 	[
 		"inline-flex items-center justify-center whitespace-nowrap rounded-lg transition-colors",
 		"focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none",
@@ -98,10 +98,7 @@ export const buttonVariants = cva(
 	}
 );
 
-export type ButtonProps = Omit<
-	React.ButtonHTMLAttributes<HTMLButtonElement>,
-	"color"
-> &
+type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> &
 	VariantProps<typeof buttonVariants> & {
 		asChild?: boolean;
 		leftIcon?: ReactNode;
@@ -161,4 +158,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export default Button;
+export { Button, buttonVariants };
+
+export type { ButtonProps };

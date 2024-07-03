@@ -5,11 +5,11 @@ import { ComponentProps, createContext, FC } from "react";
 import { useSticky } from "hooks";
 import { combineClasses } from "utils/tailwind";
 
-export type NavbarContextType = {
+type NavbarContextType = {
 	sticky: boolean;
 };
 
-export const NavbarContext = createContext({} as NavbarContextType);
+const NavbarContext = createContext({} as NavbarContextType);
 
 type NavbarProps = ComponentProps<"div">;
 
@@ -45,4 +45,6 @@ const Navbar: FC<NavbarProps> = ({ className, children, ...restProps }) => {
 	);
 };
 
-export default Navbar;
+export { Navbar, NavbarContext };
+
+export type { NavbarContextType, NavbarProps };

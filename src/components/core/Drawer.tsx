@@ -12,7 +12,7 @@ import { Drawer as DrawerPrimitive } from "vaul"; // https://vaul.emilkowal.ski/
 
 import { combineClasses } from "utils/tailwind";
 
-export type DrawerProps = ComponentProps<typeof DrawerPrimitive.Root>;
+type DrawerProps = ComponentProps<typeof DrawerPrimitive.Root>;
 
 const Drawer: FC<DrawerProps> = ({
 	shouldScaleBackground = true,
@@ -27,9 +27,11 @@ Drawer.displayName = "Drawer";
 
 const DrawerPortal = DrawerPrimitive.Portal;
 
+type DrawerCloseProps = ComponentPropsWithoutRef<typeof DrawerPrimitive.Close>;
+
 const DrawerClose = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Close>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Close>
+	DrawerCloseProps
 >(({ children, ...props }, ref) => (
 	<DrawerPrimitive.Close ref={ref} asChild {...props}>
 		{children}
@@ -37,9 +39,13 @@ const DrawerClose = forwardRef<
 ));
 DrawerClose.displayName = DrawerPrimitive.Close.displayName;
 
+type DrawerTriggerProps = ComponentPropsWithoutRef<
+	typeof DrawerPrimitive.Trigger
+>;
+
 const DrawerTrigger = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Trigger>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Trigger>
+	DrawerTriggerProps
 >(({ children, ...props }, ref) => (
 	<DrawerPrimitive.Trigger ref={ref} asChild {...props}>
 		{children}
@@ -47,9 +53,13 @@ const DrawerTrigger = forwardRef<
 ));
 DrawerTrigger.displayName = DrawerPrimitive.Trigger.displayName;
 
+type DrawerOverlayProps = ComponentPropsWithoutRef<
+	typeof DrawerPrimitive.Overlay
+>;
+
 const DrawerOverlay = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Overlay>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
+	DrawerOverlayProps
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Overlay
 		ref={ref}
@@ -59,9 +69,13 @@ const DrawerOverlay = forwardRef<
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
+type DrawerContentProps = ComponentPropsWithoutRef<
+	typeof DrawerPrimitive.Content
+>;
+
 const DrawerContent = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Content>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
+	DrawerContentProps
 >(({ className, children, ...props }, ref) => (
 	<DrawerPortal>
 		<DrawerOverlay />
@@ -79,10 +93,9 @@ const DrawerContent = forwardRef<
 ));
 DrawerContent.displayName = "DrawerContent";
 
-const DrawerHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type DrawerHeaderProps = HTMLAttributes<HTMLDivElement>;
+
+const DrawerHeader: FC<DrawerHeaderProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses(
 			"grid gap-1.5 p-4 text-center sm:text-left",
@@ -93,10 +106,9 @@ const DrawerHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
 );
 DrawerHeader.displayName = "DrawerHeader";
 
-const DrawerFooter: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type DrawerFooterProps = HTMLAttributes<HTMLDivElement>;
+
+const DrawerFooter: FC<DrawerFooterProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses("mt-auto flex flex-col gap-2 p-4", className)}
 		{...props}
@@ -104,9 +116,11 @@ const DrawerFooter: FC<HTMLAttributes<HTMLDivElement>> = ({
 );
 DrawerFooter.displayName = "DrawerFooter";
 
+type DrawerTitleProps = ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>;
+
 const DrawerTitle = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Title>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
+	DrawerTitleProps
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Title
 		ref={ref}
@@ -119,9 +133,13 @@ const DrawerTitle = forwardRef<
 ));
 DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
 
+type DrawerDescriptionProps = ComponentPropsWithoutRef<
+	typeof DrawerPrimitive.Description
+>;
+
 const DrawerDescription = forwardRef<
 	ElementRef<typeof DrawerPrimitive.Description>,
-	ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
+	DrawerDescriptionProps
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Description
 		ref={ref}
@@ -142,4 +160,16 @@ export {
 	DrawerPortal,
 	DrawerTitle,
 	DrawerTrigger
+};
+
+export type {
+	DrawerCloseProps,
+	DrawerContentProps,
+	DrawerDescriptionProps,
+	DrawerFooterProps,
+	DrawerHeaderProps,
+	DrawerOverlayProps,
+	DrawerProps,
+	DrawerTitleProps,
+	DrawerTriggerProps
 };

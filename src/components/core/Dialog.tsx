@@ -1,19 +1,20 @@
 "use client";
 
-import {
-	ComponentPropsWithoutRef,
-	ElementRef,
-	FC,
-	forwardRef,
-	HTMLAttributes
-} from "react";
+import { ElementRef, FC, forwardRef, HTMLAttributes } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { DialogProps } from "@radix-ui/react-dialog";
 import CloseIcon from "public/icons/outline/close.svg";
 
 import { combineClasses } from "utils/tailwind";
 
-export type { DialogProps };
+import type {
+	DialogCloseProps,
+	DialogContentProps,
+	DialogDescriptionProps,
+	DialogOverlayProps,
+	DialogProps,
+	DialogTitleProps,
+	DialogTriggerProps
+} from "@radix-ui/react-dialog";
 
 const Dialog = DialogPrimitive.Root;
 
@@ -23,7 +24,7 @@ const DialogClose = DialogPrimitive.Close;
 
 const DialogTrigger = forwardRef<
 	ElementRef<typeof DialogPrimitive.Trigger>,
-	ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
+	DialogTriggerProps
 >(({ className, children, ...props }, ref) => {
 	if (Array.isArray(children)) {
 		throw new Error("DialogTrigger must only contain a single child.");
@@ -44,7 +45,7 @@ DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
 
 const DialogOverlay = forwardRef<
 	ElementRef<typeof DialogPrimitive.Overlay>,
-	ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+	DialogOverlayProps
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Overlay
 		ref={ref}
@@ -61,7 +62,7 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent = forwardRef<
 	ElementRef<typeof DialogPrimitive.Content>,
-	ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+	DialogContentProps
 >(({ className, children, ...props }, ref) => (
 	<DialogPortal>
 		<DialogOverlay />
@@ -93,10 +94,9 @@ const DialogContent = forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-const DialogHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type DialogHeaderProps = HTMLAttributes<HTMLDivElement>;
+
+const DialogHeader: FC<DialogHeaderProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses(
 			"flex flex-col space-y-1.5 text-center sm:text-left",
@@ -107,10 +107,9 @@ const DialogHeader: FC<HTMLAttributes<HTMLDivElement>> = ({
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogFooter: FC<HTMLAttributes<HTMLDivElement>> = ({
-	className,
-	...props
-}) => (
+type DialogFooterProps = HTMLAttributes<HTMLDivElement>;
+
+const DialogFooter: FC<DialogFooterProps> = ({ className, ...props }) => (
 	<div
 		className={combineClasses(
 			"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
@@ -123,7 +122,7 @@ DialogFooter.displayName = "DialogFooter";
 
 const DialogTitle = forwardRef<
 	ElementRef<typeof DialogPrimitive.Title>,
-	ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+	DialogTitleProps
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Title
 		ref={ref}
@@ -138,7 +137,7 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
 const DialogDescription = forwardRef<
 	ElementRef<typeof DialogPrimitive.Description>,
-	ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+	DialogDescriptionProps
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Description
 		ref={ref}
@@ -159,4 +158,16 @@ export {
 	DialogPortal,
 	DialogTitle,
 	DialogTrigger
+};
+
+export type {
+	DialogCloseProps,
+	DialogContentProps,
+	DialogDescriptionProps,
+	DialogFooterProps,
+	DialogHeaderProps,
+	DialogOverlayProps,
+	DialogProps,
+	DialogTitleProps,
+	DialogTriggerProps
 };

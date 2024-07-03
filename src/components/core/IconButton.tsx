@@ -7,7 +7,7 @@ import { combineClasses } from "utils/tailwind";
 
 import type { VariantProps } from "class-variance-authority";
 
-export const iconButtonVariants = cva(
+const iconButtonVariants = cva(
 	[
 		"inline-flex items-center justify-center whitespace-nowrap rounded-lg transition-colors",
 		"focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none",
@@ -98,7 +98,7 @@ export const iconButtonVariants = cva(
 	}
 );
 
-export type IconButtonProps = Omit<
+type IconButtonProps = Omit<
 	React.ButtonHTMLAttributes<HTMLButtonElement>,
 	"color"
 > &
@@ -145,4 +145,6 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
 IconButton.displayName = "Button";
 
-export default IconButton;
+export { IconButton, iconButtonVariants };
+
+export type { IconButtonProps };

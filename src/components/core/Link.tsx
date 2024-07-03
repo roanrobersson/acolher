@@ -18,4 +18,6 @@ const Link: FC<LinkProps> = ({ className, active, children, ...restProps }) => {
 	);
 };
 
-export default Link;
+export { Link };
+
+export type { LinkProps };

@@ -6,11 +6,13 @@ import { cva, VariantProps } from "class-variance-authority";
 import useCombinedRefs from "hooks/useCombinedRefs";
 import { combineClasses } from "utils/tailwind";
 
+import { Label } from "./Label";
+
 export const inputVariants = cva("", {
 	variants: {
 		size: {
-			md: "text-action-sm min-h-[42px]", // height = 42px
-			lg: "text-action-md min-h-[52px]" // height = 52px
+			md: "text-input-sm min-h-[42px]", // height = 42px
+			lg: "text-input-md min-h-[52px]" // height = 52px
 		}
 	},
 	defaultVariants: {
@@ -18,17 +20,29 @@ export const inputVariants = cva("", {
 	}
 });
 
-export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
 	VariantProps<typeof inputVariants> & {
 		label?: string;
+		helperText?: string;
 		inputClassName?: string;
 		leftIcon?: ReactNode;
 		rightIcon?: ReactNode;
+		error?: boolean;
 	};
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
-		{ className, label, leftIcon, rightIcon, size = "md", ...restProps },
+		{
+			className,
+			label,
+			helperText,
+			leftIcon,
+			rightIcon,
+			error,
+			size = "md",
+			inputClassName,
+			...restProps
+		},
 		ref
 	) => {
 		const { refCallback, ref: inputRef } = useCombinedRefs([ref]);
@@ -36,18 +50,26 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<div className={combineClasses("grid", className)}>
 				{label && (
-					<label className="mb-2 text-title-sm" htmlFor={restProps.id}>
+					<Label
+						className={combineClasses("mb-2 text-title-sm", {
+							"text-destructive": error
+						})}
+						htmlFor={restProps.id}
+					>
 						{label}
-					</label>
+					</Label>
 				)}
 
 				<div
 					className={combineClasses(
 						inputVariants({ size }),
-						"text-sm ring-offset-background flex h-full rounded-lg bg-gray-50 px-5",
-						"focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2",
-						"file:bg-transparent",
-						"disabled:cursor-not-allowed disabled:opacity-50"
+						"border-input bg-background flex h-full rounded-lg border px-5",
+						"focus-within:ring-ring focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2",
+						"disabled:cursor-not-allowed disabled:opacity-50",
+						{
+							"border-0 bg-transparent": restProps.type === "file",
+							"focus-within:destructive bg-destructive/20": error
+						}
 					)}
 					onClick={() => {
 						inputRef.current?.focus();
@@ -62,7 +84,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 					<input
 						className={combineClasses(
 							"w-full overflow-ellipsis text-input-sm focus:outline-none",
-							"bg-transparent placeholder:text-gray-400"
+							"placeholder:text-muted-foreground bg-transparent",
+							inputClassName
 						)}
 						ref={refCallback}
 						{...restProps}
@@ -74,6 +97,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 						</div>
 					)}
 				</div>
+
+				{helperText && (
+					<p
+						className={combineClasses("text-muted-foreground text-body-sm", {
+							"text-destructive": error
+						})}
+					>
+						{helperText}
+					</p>
+				)}
 			</div>
 		);
 	}
@@ -81,4 +114,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = "Input";
 
-export default Input;
+export { Input };
+
+export type { InputProps };
