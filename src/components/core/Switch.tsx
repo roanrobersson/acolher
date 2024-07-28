@@ -3,7 +3,7 @@
 import { ElementRef, forwardRef } from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type { SwitchProps } from "@radix-ui/react-switch";
 
@@ -12,10 +12,10 @@ const Switch = forwardRef<
 	SwitchProps
 >(({ className, ...props }, ref) => (
 	<SwitchPrimitives.Root
-		className={combineClasses(
+		className={cc(
 			"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors",
-			"data-[state=checked]:bg-primary-400 data-[state=unchecked]:bg-input",
-			"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+			"data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
+			"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
 			"disabled:cursor-not-allowed disabled:opacity-50",
 			className
 		)}
@@ -23,8 +23,8 @@ const Switch = forwardRef<
 		ref={ref}
 	>
 		<SwitchPrimitives.Thumb
-			className={combineClasses(
-				"bg-background pointer-events-none block h-5 w-5 rounded-full shadow-lg ring-0 transition-transform",
+			className={cc(
+				"pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform",
 				"data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
 			)}
 		/>

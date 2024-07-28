@@ -3,28 +3,35 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type { VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
 	[
 		"inline-flex items-center justify-center whitespace-nowrap rounded-lg transition-colors",
-		"focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none",
-		"disabled:pointer-events-none disabled:opacity-50",
-		"dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300"
+		"focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
+		"disabled:pointer-events-none disabled:opacity-50"
 	],
 	{
 		variants: {
-			variant: {
-				solid: null,
-				outline: "border",
-				ghost: null,
-				link: "underline-offset-4 hover:underline"
-			},
-			color: {
-				primary: null,
-				secondary: null
+			hierarchy: {
+				primary: [
+					"bg-[--button-primary-background] text-[--button-primary-foreground]",
+					"hover:bg-[--button-primary-background_hover] hover:text-[--button-primary-foreground_hover]"
+				],
+				secondary: [
+					"border text-[--button-secondary-foreground] border-[--button-secondary-border]",
+					"hover:bg-[--button-secondary-background_hover] hover:border-[--button-secondary-border_hover] hover:text-[--button-secondary-foreground_hover]"
+				],
+				tertiary: [
+					"text-[--button-tertiary-foreground]",
+					"hover:bg-[--button-tertiary-background_hover] hover:text-[--button-tertiary-foreground_hover]"
+				],
+				link: [
+					"underline-offset-4 text-[--button-link-foreground]",
+					"hover:underline"
+				]
 			},
 			size: {
 				sm: "text-action-sm min-h-[32px] px-3", // height = 32px
@@ -32,73 +39,14 @@ const buttonVariants = cva(
 				lg: "text-action-md min-h-[52px] px-5" // height = 52px
 			}
 		},
-		compoundVariants: [
-			// Solid
-			{
-				variant: "solid",
-				color: "primary",
-				className: [
-					"bg-gradient-to-br from-blue-400 to-blue-500 text-white",
-					"hover:from-blue-500 hover:to-blue-600"
-				]
-			},
-			{
-				variant: "solid",
-				color: "secondary",
-				className: "bg-gray-900 hover:bg-black text-white"
-			},
-
-			// Outline
-			{
-				variant: "outline",
-				color: "primary",
-				className: [
-					"border-blue-300 text-blue-500",
-					"hover:bg-blue-100 hover:border-blue-500 hover:bg-opacity-50"
-				]
-			},
-			{
-				variant: "outline",
-				color: "secondary",
-				className: [
-					"border-gray-700",
-					"hover:bg-gray-100 hover:border-gray-900  hover:bg-opacity-50"
-				]
-			},
-
-			// Ghost
-			{
-				variant: "ghost",
-				color: "primary",
-				className: "text-blue-500 hover:bg-blue-100 hover:bg-opacity-50"
-			},
-			{
-				variant: "ghost",
-				color: "secondary",
-				className: "text-black hover:bg-gray-200 hover:bg-opacity-50"
-			},
-
-			// Link
-			{
-				variant: "link",
-				color: "primary",
-				className: "text-blue-500 hover:bg-blue-100 hover:bg-opacity-50"
-			},
-			{
-				variant: "link",
-				color: "secondary",
-				className: "text-black hover:bg-gray-200 hover:bg-opacity-50"
-			}
-		],
 		defaultVariants: {
-			variant: "solid",
-			color: "primary",
+			hierarchy: "primary",
 			size: "md"
 		}
 	}
 );
 
-type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> &
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 	VariantProps<typeof buttonVariants> & {
 		asChild?: boolean;
 		leftIcon?: ReactNode;
@@ -110,9 +58,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
 			className,
-			variant = "solid",
+			hierarchy = "primary",
 			size = "md",
-			color = "primary",
 			asChild = false,
 			leftIcon,
 			rightIcon,
@@ -126,9 +73,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 		return (
 			<Comp
-				className={combineClasses(
-					buttonVariants({ variant, size, color, className })
-				)}
+				className={cc(buttonVariants({ hierarchy, size, className }))}
 				ref={ref}
 				{...restProps}
 			>

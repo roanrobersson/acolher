@@ -6,7 +6,7 @@ const NotFoundPage = () => {
 		<>
 			<Header />
 
-			<main className="flex h-[50vh] items-center justify-center">
+			<main className="flex h-[60vh] items-center justify-center bg-card">
 				<section className="text-center">
 					<h1 className="block font-clashDisplay text-display-md">
 						<span className="font-semibold">404</span>
@@ -15,7 +15,7 @@ const NotFoundPage = () => {
 
 					<Link
 						href="/"
-						className="mt-8 block text-link-md text-blue-400 hover:underline"
+						className="mt-8 block text-link-md text-primary-400 hover:underline"
 						replace
 					>
 						Medical Center Homepage

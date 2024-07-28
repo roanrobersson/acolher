@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-import AboutSection from "./sections/AboutSection";
-import BenefitsSection from "./sections/BenefitsSection";
-import BlogSection from "./sections/BlogSection";
-import ProfessionalsSection from "./sections/ProfessionalsSection";
-import ServicesSection from "./sections/ServicesSection";
-import WelcomeSection from "./sections/WelcomeSection";
+import WelcomeSection from "./sections/1_WelcomeSection";
+import ServicesSection from "./sections/2_ServicesSection";
+import AboutSection from "./sections/3_AboutSection";
+import BenefitsSection from "./sections/4_BenefitsSection";
+import ProfessionalsSection from "./sections/5_ProfessionalsSection";
+import BlogSection from "./sections/6_BlogSection";
 
 const HomePage: FC = () => {
 	return (

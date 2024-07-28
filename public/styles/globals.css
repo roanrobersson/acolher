@@ -5,6 +5,169 @@
 @layer base {
 	* {
 		box-sizing: border-box;
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		font-feature-settings:
+			"rlig" 1,
+			"calt" 1;
+	}
+}
+
+@layer base {
+	:root {
+		--primary: var(--primary-300);
+		--primary-100: #d9e2ff;
+		--primary-200: #a6c1ff;
+		--primary-300: #598bff;
+		--primary-400: #3366ff;
+		--primary-500: #274bdb;
+		--primary-600: #1e40b1;
+		--primary-700: #1e3a8a;
+		--primary-800: #1f2f63;
+		--primary-900: #1d2147;
+		--primary-foreground: #f7faff;
+
+		--secondary: var(--secondary-300);
+		--secondary-100: #e2f3fc;
+		--secondary-200: #bee7f9;
+		--secondary-300: #96daf6;
+		--secondary-400: #43beed;
+		--secondary-500: #1ba6dc;
+		--secondary-600: #0e85bb;
+		--secondary-700: #0c6a98;
+		--secondary-800: #0e5a7e;
+		--secondary-900: #124b68;
+		--secondary-foreground: #f7faff;
+
+		--neutral: var(--neutral-500);
+		--neutral-100: #f5f5f5;
+		--neutral-200: #eeeeee;
+		--neutral-300: #e0e0e0;
+		--neutral-400: #bdbdbd;
+		--neutral-500: #9e9e9e;
+		--neutral-600: #757575;
+		--neutral-700: #616161;
+		--neutral-800: #424242;
+		--neutral-900: #212121;
+		--neutral-foreground: #f7faff;
+
+		--dark-gray: #383f52;
+		--dark-gray-100: #eceef2;
+		--dark-gray-200: #d4d8e3;
+		--dark-gray-300: #afb7ca;
+		--dark-gray-400: #8491ac;
+		--dark-gray-500: #657392;
+		--dark-gray-600: #505b79;
+		--dark-gray-700: #414a63;
+		--dark-gray-800: #383f52;
+		--dark-gray-900: #333847;
+		--dark-gray-foreground: #f7faff;
+
+		--blue-gray: #262f42;
+		--blue-gray-100: #eaedf4;
+		--blue-gray-200: #d0d8e7;
+		--blue-gray-300: #a7b7d2;
+		--blue-gray-400: #7890b8;
+		--blue-gray-500: #5772a0;
+		--blue-gray-600: #435a86;
+		--blue-gray-700: #384a6c;
+		--blue-gray-800: #313f5b;
+		--blue-gray-900: #262f42;
+		--blue-gray-foreground: #f7faff;
+
+		--success: #49c88b;
+		--success-foreground: #f7faff;
+
+		--danger: #f2ad51;
+		--danger-foreground: #f7faff;
+
+		--destructive: #fa5757;
+		--destructive-foreground: #f7faff;
+
+		--radius: 0.5rem;
+	}
+}
+
+@layer base {
+	:root {
+		--background: var(--neutral-100);
+		--foreground: var(--neutral-900);
+
+		--muted: var(--neutral-200);
+		--muted-foreground: var(--neutral-400);
+
+		--popover: #ffffff;
+		--popover-foreground: var(--neutral-900);
+
+		--border: var(--dark-gray-200);
+		--input: var(--neutral-100);
+
+		--card: #ffffff;
+		--card-foreground: var(--neutral-900);
+
+		--accent: var(--dark-gray-100);
+		--accent-foreground: var(--neutral-900);
+
+		--ring: var(--primary);
+
+		--button-primary-background: var(--primary-400);
+		--button-primary-background_hover: var(--primary-500);
+		--button-primary-foreground: white;
+		--button-primary-foreground_hover: white;
+
+		--button-secondary-background_hover: white;
+		--button-secondary-border: var(--neutral-900);
+		--button-secondary-border_hover: var(--neutral-900);
+		--button-secondary-foreground: var(--neutral-900);
+		--button-secondary-foreground_hover: var(--neutral-900);
+
+		--button-tertiary-background_hover: white;
+		--button-tertiary-foreground: var(--neutral-900);
+		--button-tertiary-foreground_hover: var(--neutral-900);
+
+		--button-link-foreground: var(--primary-500);
+	}
+
+	.dark {
+		--background: var(--blue-gray-900);
+		--foreground: #ffffff;
+
+		--muted: var(--neutral-200);
+		--muted-foreground: var(--neutral-400);
+
+		--popover: #ffffff;
+		--popover-foreground: #ffffff;
+
+		--border: var(--dark-gray-200);
+		--input: var(--blue-gray-900);
+
+		--card: var(--dark-gray-800);
+		--card-foreground: #ffffff;
+
+		--accent: var(--dark-gray-100);
+		--accent-foreground: #ffffff;
+
+		--ring: var(--secondary);
+
+		--button-primary-background: var(--primary-400);
+		--button-primary-background_hover: var(--primary-500);
+		--button-primary-foreground: white;
+		--button-primary-foreground_hover: white;
+
+		--button-secondary-background_hover: var(--neutral-100);
+		--button-secondary-border: white;
+		--button-secondary-border_hover: var(--neutral-900);
+		--button-secondary-foreground: white;
+		--button-secondary-foreground_hover: var(--neutral-900);
+
+		--button-tertiary-background_hover: var(--neutral-100);
+		--button-tertiary-foreground: white;
+		--button-tertiary-foreground_hover: var(--neutral-900);
+
+		--button-link-foreground: var(--primary-300);
 	}
 }
 

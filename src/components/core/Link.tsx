@@ -3,14 +3,18 @@
 import { ComponentProps, FC } from "react";
 import NextLink from "next/link";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 type LinkProps = ComponentProps<typeof NextLink> & { active?: boolean };
 
 const Link: FC<LinkProps> = ({ className, active, children, ...restProps }) => {
 	return (
 		<NextLink
-			className={combineClasses({ "text-blue-400": active }, className)}
+			className={cc(
+				"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+				{ "text-primary": active },
+				className
+			)}
 			{...restProps}
 		>
 			{children}

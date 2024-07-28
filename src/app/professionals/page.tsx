@@ -11,12 +11,12 @@ import {
 	SelectTrigger,
 	SelectValue
 } from "components/core";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 const ProfessionalsPage: FC = () => {
 	return (
 		<main>
-			<section className="bg-dark-gray-50 pt-9 lg:pt-28">
+			<section className="bg-background pt-9 lg:pt-28">
 				<div className="fluid-container flex flex-col gap-2 md:flex-row md:items-center md:gap-9">
 					<h2 className="font-clashDisplay text-display-lg lg:text-display-5xl">
 						Our Doctors
@@ -55,14 +55,9 @@ const ProfessionalsPage: FC = () => {
 const WhatThaySay: FC = () => {
 	return (
 		<div id="card-container" className="pt-[80px] lg:pt-[130px]">
-			<div
-				id="card"
-				className={combineClasses(
-					"relative bg-light-blue-50 dark:bg-dark-gray-800"
-				)}
-			>
+			<div id="card" className={cc("bg-secondary-100 relative dark:bg-card")}>
 				<div
-					className={combineClasses(
+					className={cc(
 						"fluid-container mx-auto flex flex-col gap-11 pb-14",
 						"lg:flex-row-reverse lg:gap-10 lg:py-24"
 					)}
@@ -70,7 +65,7 @@ const WhatThaySay: FC = () => {
 					<div id="image-container" className="h-[136px] w-full lg:w-[645px]">
 						<div
 							id="image"
-							className={combineClasses(
+							className={cc(
 								"relative top-[-78px] h-[214px]",
 								"lg:absolute lg:top-[-130px] lg:h-[416px] lg:w-[645px]"
 							)}

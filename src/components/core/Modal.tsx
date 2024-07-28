@@ -3,7 +3,7 @@
 import { ElementRef, FC, forwardRef, HTMLAttributes } from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import { Button } from "./Button";
 
@@ -46,7 +46,7 @@ const ModalOverlay = forwardRef<
 	ModalOverlayProps
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Overlay
-		className={combineClasses(
+		className={cc(
 			"fixed inset-0 z-50 bg-black/60",
 			"data-[state=open]:animate-in data-[state=open]:fade-in-0",
 			"data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
@@ -66,8 +66,8 @@ const ModalContent = forwardRef<
 		<ModalOverlay />
 		<AlertDialogPrimitive.Content
 			ref={ref}
-			className={combineClasses(
-				"fixed z-50 grid max-h-[90%] w-[90%] gap-12 overflow-y-auto border bg-white p-6 shadow-lg",
+			className={cc(
+				"fixed z-50 grid max-h-[90%] w-[90%] gap-12 overflow-y-auto border bg-card p-6 shadow-lg",
 				"left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] duration-200",
 				"sm:rounded-lg md:max-w-lg lg:max-w-5xl",
 				"lg:px-20 lg:pb-20 lg:pt-12",
@@ -85,7 +85,7 @@ type ModalHeaderProps = HTMLAttributes<HTMLDivElement>;
 
 const ModalHeader: FC<ModalHeaderProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses(
+		className={cc(
 			"flex flex-col gap-8 text-center sm:text-left lg:gap-y-11",
 			className
 		)}
@@ -98,7 +98,7 @@ type ModalFooterProps = HTMLAttributes<HTMLDivElement>;
 
 const ModalFooter: FC<ModalFooterProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses(
+		className={cc(
 			"flex flex-col-reverse gap-2 lg:flex-row lg:justify-end lg:gap-6",
 			className
 		)}
@@ -113,7 +113,7 @@ const ModalTitle = forwardRef<
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Title
 		ref={ref}
-		className={combineClasses("text-title-2xl lg:text-title-5xl", className)}
+		className={cc("text-title-2xl lg:text-title-5xl", className)}
 		{...props}
 	/>
 ));
@@ -125,7 +125,7 @@ const ModalDescription = forwardRef<
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Description
 		ref={ref}
-		className={combineClasses("text-title-sm lg:text-title-lg", className)}
+		className={cc("text-title-sm lg:text-title-lg", className)}
 		{...props}
 	/>
 ));
@@ -149,7 +149,7 @@ const ModalCancel = forwardRef<
 		{asChild ? (
 			children
 		) : (
-			<Button variant="ghost" color="secondary" size="lg">
+			<Button hierarchy="secondary" size="lg">
 				{children}
 			</Button>
 		)}

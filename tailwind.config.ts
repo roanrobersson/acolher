@@ -46,7 +46,7 @@ const config = {
 			addComponents({
 				".___example-class": {
 					"background-color": "green",
-					"@apply bg-red-600 text-blue-500 font-bold": {}
+					"@apply bg-red-600 text-primary-500 font-bold": {}
 				}
 			});
 		}),

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Drawer as DrawerPrimitive } from "vaul"; // https://vaul.emilkowal.ski/
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 type DrawerProps = ComponentProps<typeof DrawerPrimitive.Root>;
 
@@ -63,7 +63,7 @@ const DrawerOverlay = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Overlay
 		ref={ref}
-		className={combineClasses("fixed inset-0 z-50 bg-black/60", className)}
+		className={cc("fixed inset-0 z-50 bg-black/60", className)}
 		{...props}
 	/>
 ));
@@ -81,8 +81,8 @@ const DrawerContent = forwardRef<
 		<DrawerOverlay />
 		<DrawerPrimitive.Content
 			ref={ref}
-			className={combineClasses(
-				"fixed inset-y-0 right-0 z-50 ml-24 flex h-auto flex-col border bg-white",
+			className={cc(
+				"fixed inset-y-0 right-0 z-50 ml-24 flex h-auto flex-col border bg-card",
 				className
 			)}
 			{...props}
@@ -97,10 +97,7 @@ type DrawerHeaderProps = HTMLAttributes<HTMLDivElement>;
 
 const DrawerHeader: FC<DrawerHeaderProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses(
-			"grid gap-1.5 p-4 text-center sm:text-left",
-			className
-		)}
+		className={cc("grid gap-1.5 p-4 text-center sm:text-left", className)}
 		{...props}
 	/>
 );
@@ -110,7 +107,7 @@ type DrawerFooterProps = HTMLAttributes<HTMLDivElement>;
 
 const DrawerFooter: FC<DrawerFooterProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses("mt-auto flex flex-col gap-2 p-4", className)}
+		className={cc("mt-auto flex flex-col gap-2 p-4", className)}
 		{...props}
 	/>
 );
@@ -124,7 +121,7 @@ const DrawerTitle = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Title
 		ref={ref}
-		className={combineClasses(
+		className={cc(
 			"text-lg font-semibold leading-none tracking-tight",
 			className
 		)}
@@ -143,7 +140,7 @@ const DrawerDescription = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Description
 		ref={ref}
-		className={combineClasses("text-sm text-muted-foreground", className)}
+		className={cc("text-sm text-muted-foreground", className)}
 		{...props}
 	/>
 ));

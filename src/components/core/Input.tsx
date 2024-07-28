@@ -4,9 +4,7 @@ import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import useCombinedRefs from "hooks/useCombinedRefs";
-import { combineClasses } from "utils/tailwind";
-
-import { Label } from "./Label";
+import { cc } from "utils/tailwind";
 
 export const inputVariants = cva("", {
 	variants: {
@@ -22,23 +20,17 @@ export const inputVariants = cva("", {
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
 	VariantProps<typeof inputVariants> & {
-		label?: string;
-		helperText?: string;
 		inputClassName?: string;
 		leftIcon?: ReactNode;
 		rightIcon?: ReactNode;
-		error?: boolean;
 	};
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
 			className,
-			label,
-			helperText,
 			leftIcon,
 			rightIcon,
-			error,
 			size = "md",
 			inputClassName,
 			...restProps
@@ -48,64 +40,41 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 		const { refCallback, ref: inputRef } = useCombinedRefs([ref]);
 
 		return (
-			<div className={combineClasses("grid", className)}>
-				{label && (
-					<Label
-						className={combineClasses("mb-2 text-title-sm", {
-							"text-destructive": error
-						})}
-						htmlFor={restProps.id}
-					>
-						{label}
-					</Label>
+			<div
+				className={cc(
+					inputVariants({ size }),
+					"flex h-full rounded-lg border border-input bg-background px-5",
+					"focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
+					"disabled:cursor-not-allowed disabled:opacity-50",
+					{
+						"border-0 bg-transparent": restProps.type === "file"
+					},
+					className
+				)}
+				onClick={() => {
+					inputRef.current?.focus();
+				}}
+			>
+				{leftIcon && (
+					<div className="mr-4 flex items-center justify-center">
+						{leftIcon}
+					</div>
 				)}
 
-				<div
-					className={combineClasses(
-						inputVariants({ size }),
-						"border-input bg-background flex h-full rounded-lg border px-5",
-						"focus-within:ring-ring focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2",
-						"disabled:cursor-not-allowed disabled:opacity-50",
-						{
-							"border-0 bg-transparent": restProps.type === "file",
-							"focus-within:destructive bg-destructive/20": error
-						}
+				<input
+					className={cc(
+						"w-full overflow-ellipsis text-input-sm focus:outline-none",
+						"bg-transparent placeholder:text-muted-foreground",
+						inputClassName
 					)}
-					onClick={() => {
-						inputRef.current?.focus();
-					}}
-				>
-					{leftIcon && (
-						<div className="mr-4 flex items-center justify-center">
-							{leftIcon}
-						</div>
-					)}
+					ref={refCallback}
+					{...restProps}
+				/>
 
-					<input
-						className={combineClasses(
-							"w-full overflow-ellipsis text-input-sm focus:outline-none",
-							"placeholder:text-muted-foreground bg-transparent",
-							inputClassName
-						)}
-						ref={refCallback}
-						{...restProps}
-					/>
-
-					{rightIcon && (
-						<div className="ml-4 flex items-center justify-center">
-							{rightIcon}
-						</div>
-					)}
-				</div>
-
-				{helperText && (
-					<p
-						className={combineClasses("text-muted-foreground text-body-sm", {
-							"text-destructive": error
-						})}
-					>
-						{helperText}
-					</p>
+				{rightIcon && (
+					<div className="ml-4 flex items-center justify-center">
+						{rightIcon}
+					</div>
 				)}
 			</div>
 		);

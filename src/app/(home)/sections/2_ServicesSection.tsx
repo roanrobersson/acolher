@@ -2,7 +2,7 @@ import { ComponentProps, FC } from "react";
 import serviceList from "serviceList";
 
 import ServiceIcon from "components/ServiceIcon";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 const ServicesSection: FC<ComponentProps<"div">> = (props) => {
 	return (
@@ -13,7 +13,7 @@ const ServicesSection: FC<ComponentProps<"div">> = (props) => {
 				</h2>
 
 				<div
-					className={combineClasses(
+					className={cc(
 						"mt-10 grid gap-x-6 gap-y-7",
 						"sm:grid-cols-2",
 						"md:grid-cols-3",
@@ -22,13 +22,10 @@ const ServicesSection: FC<ComponentProps<"div">> = (props) => {
 					)}
 				>
 					{serviceList.map((service) => (
-						<div
-							className="rounded-2xl bg-white p-5 lg:p-8 dark:bg-dark-gray-800"
-							key={service.title}
-						>
+						<div className="rounded-2xl bg-card p-5 lg:p-8" key={service.title}>
 							<ServiceIcon service={service} />
 
-							<div className="mt-7 text-center sm:text-left lg:mt-12 dark:text-white">
+							<div className="mt-7 text-center sm:text-left lg:mt-12">
 								<h3 className="text-title-md">{service.title}</h3>
 
 								<p className="mt-2 text-body-sm lg:mt-3">

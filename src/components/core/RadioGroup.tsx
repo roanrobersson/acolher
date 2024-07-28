@@ -4,7 +4,7 @@ import { ElementRef, forwardRef } from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import CheckCircleIcon from "public/icons/solid/check-circle.svg";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type {
 	RadioGroupItemProps,
@@ -17,7 +17,7 @@ const RadioGroup = forwardRef<
 >(({ className, ...props }, ref) => {
 	return (
 		<RadioGroupPrimitive.Root
-			className={combineClasses("grid gap-2", className)}
+			className={cc("grid gap-2", className)}
 			{...props}
 			ref={ref}
 		/>
@@ -32,9 +32,9 @@ const RadioGroupItem = forwardRef<
 	return (
 		<RadioGroupPrimitive.Item
 			ref={ref}
-			className={combineClasses(
-				"border-input aspect-square h-5 w-5 rounded-full text-success-400",
-				"focus-within:ring-ring focus-within:ring-2 focus-within:ring-offset-2 focus:outline-none",
+			className={cc(
+				"aspect-square h-5 w-5 rounded-full border-input text-success",
+				"focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
 				"disabled:cursor-not-allowed disabled:opacity-50",
 				"data-[state=unchecked]:border",
 				className

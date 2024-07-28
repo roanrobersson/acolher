@@ -6,7 +6,7 @@ import Image3 from "public/images/blog/3.png";
 import Image5 from "public/images/blog/5.png";
 
 import { Button, Link } from "components/core";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 type Item = {
 	title: string;
@@ -53,7 +53,7 @@ const BlogSection: FC<ComponentProps<"div">> = ({
 }) => {
 	return (
 		<section
-			className={combineClasses("pt-[148px] lg:pt-[200px]", className)}
+			className={cc("pt-[148px] lg:pt-[200px]", className)}
 			{...restProps}
 		>
 			<div className="fluid-container flex flex-col justify-center">
@@ -71,7 +71,7 @@ const BlogSection: FC<ComponentProps<"div">> = ({
 				</div>
 
 				<div
-					className={combineClasses(
+					className={cc(
 						"mt-8 grid grid-cols-1 justify-items-center gap-6",
 						"md:grid-cols-2 md:gap-y-10",
 						"lg:mt-11 lg:grid-cols-3 lg:gap-y-16 lg:px-0"
@@ -82,11 +82,7 @@ const BlogSection: FC<ComponentProps<"div">> = ({
 					))}
 				</div>
 
-				<Button
-					className="mx-20 mt-[64px] lg:hidden"
-					color="secondary"
-					size="lg"
-				>
+				<Button className="mx-20 mt-[64px] lg:hidden" size="lg">
 					See More
 				</Button>
 			</div>
@@ -105,15 +101,15 @@ const BlogCard: FC<ComponentProps<"a"> & { item: Item }> = ({
 		<Link
 			href={href}
 			key={title}
-			className={combineClasses(
-				"group relative grid w-full max-w-[500px]  gap-4 bg-white p-4 dark:bg-dark-gray-800",
+			className={cc(
+				"group relative grid w-full max-w-[500px]  gap-4 bg-card p-4",
 				"lg:max-w-none lg:first:col-span-3 lg:first:flex lg:first:items-center lg:first:gap-11 lg:first:p-5",
 				className
 			)}
 			{...restProps}
 		>
 			<div
-				className={combineClasses(
+				className={cc(
 					"relative h-[228px] w-full overflow-hidden rounded-lg lg:h-[254px] lg:group-first:h-[330px]"
 				)}
 			>
@@ -129,7 +125,7 @@ const BlogCard: FC<ComponentProps<"a"> & { item: Item }> = ({
 
 			<div className="px-2 group-first:shrink-[1.2] lg:group-first:px-0">
 				<h3
-					className={combineClasses(
+					className={cc(
 						"text-title-md group-hover:underline",
 						"lg:text-title-lg lg:group-first:text-title-5xl"
 					)}

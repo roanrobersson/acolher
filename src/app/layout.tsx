@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import ArtifactsImage from "public/images/artifacts.png";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type { Metadata } from "next";
 
@@ -45,16 +45,26 @@ const RootLayout = ({
 				<link rel="icon" sizes="32x32" href="/favicon/favicon-32.ico" />
 				<link rel="icon" sizes="128x128" href="/favicon/favicon-128.ico" />
 				<link rel="icon" sizes="256x256" href="/favicon/favicon-256.ico" />
-				<Script id="dark-mode" src="scripts/darkModeScript.js" />
+				<Script id="theme-provider" strategy="beforeInteractive">
+					{`if (
+						localStorage.theme === "dark" ||
+						(!("theme" in localStorage) &&
+							window.matchMedia("(prefers-color-scheme: dark)").matches)
+						) {
+							document.documentElement.classList.add("dark");
+						} else {
+							document.documentElement.classList.remove("dark");
+						}
+					`}
+				</Script>
 			</head>
 
 			<body
-				className={combineClasses(
+				className={cc(
 					PlusJakartaSansFont.className,
 					PlusJakartaSansFont.variable,
 					MontserratFont.variable,
-					ClashDisplayFont.variable,
-					"bg-dark-gray-50 text-black dark:bg-dark-900 dark:text-white"
+					ClashDisplayFont.variable
 				)}
 			>
 				<ArtifactsBackground />
@@ -68,8 +78,8 @@ const RootLayout = ({
 const ArtifactsBackground = () => (
 	<div
 		id="artifacts-background"
-		className={combineClasses(
-			"absolute top-0 z-[-1] flex h-[780px] w-full flex-col overflow-hidden bg-light-blue-100 pb-20",
+		className={cc(
+			"bg-secondary-100 absolute top-0 z-[-1] flex h-[780px] w-full flex-col overflow-hidden pb-20",
 			"lg:h-[840px]"
 		)}
 	>
@@ -81,7 +91,7 @@ const ArtifactsBackground = () => (
 				alt=""
 				fill
 				quality={100}
-				className={combineClasses(
+				className={cc(
 					"ml-auto hidden",
 					"md:block md:object-cover",
 					"lg:!right-[-200px]"

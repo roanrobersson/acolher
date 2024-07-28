@@ -2,7 +2,6 @@
 
 import { FC, SVGProps } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import CopyRigthIcon from "public/icons/outline/copyright.svg";
 import CallIcon from "public/icons/solid/call.svg";
 import DarkModeIcon from "public/icons/solid/dark-mode.svg";
@@ -14,9 +13,9 @@ import TwitterIcon from "public/icons/solid/twitter.svg";
 import ArtifactsImage from "public/images/artifacts.png";
 import rk from "routeKeys";
 
-import { Button, Input, Switch } from "components/core";
+import { Button, Input, Link, Switch } from "components/core";
 import { useDarkMode } from "hooks";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import Brand from "./Brand";
 
@@ -50,23 +49,23 @@ const Footer: FC = () => {
 	return (
 		<footer className="relative pt-[120px]">
 			{/* Feed */}
-			<div className="container relative overflow-hidden bg-light-blue-300 lg:top-[100px] lg:rounded-xl">
+			<div className="container relative overflow-hidden bg-secondary-300 lg:top-[100px] lg:rounded-xl">
 				<Image
 					src={ArtifactsImage}
 					alt=""
 					fill
-					className="!top-[40%] object-cover md:!inset-0"
+					className="!top-[40%] rounded-md object-cover md:!inset-0"
 				/>
 
 				<div
-					className={combineClasses(
+					className={cc(
 						"relative flex flex-col items-center gap-7 py-[60px]",
 						"lg:flex-row lg:gap-20 lg:p-20"
 					)}
 				>
 					<h2
-						className={combineClasses(
-							"flex-1 px-8 text-center text-display-xs text-gray-900",
+						className={cc(
+							"flex-1 px-8 text-center text-display-xs text-neutral-900",
 							"lg:px-0 lg:text-left lg:text-display-lg"
 						)}
 					>
@@ -75,8 +74,13 @@ const Footer: FC = () => {
 					</h2>
 
 					<form className="flex flex-1 flex-col gap-3 px-5 lg:px-0">
-						<Input className="text-center" placeholder="Your email" size="lg" />
-						<Button color="secondary" size="lg">
+						<Input
+							className="border-white bg-white text-neutral-900"
+							inputClassName="text-center"
+							placeholder="Your email"
+							size="lg"
+						/>
+						<Button size="lg" className="bg-neutral-900 hover:bg-neutral-800">
 							Subscribe
 						</Button>
 					</form>
@@ -85,8 +89,8 @@ const Footer: FC = () => {
 
 			{/* Footer */}
 			<div
-				className={combineClasses(
-					"mt-6 bg-white pb-7 pt-5 dark:bg-dark-gray-800",
+				className={cc(
+					"mt-6 bg-card pb-7 pt-5",
 					"lg:mt-0 lg:pb-10 lg:pt-[166px]"
 				)}
 			>
@@ -98,7 +102,7 @@ const Footer: FC = () => {
 							<address className="mt-5 text-body-md not-italic">
 								52 Bedok Reservoir Cres Singapore 479226
 							</address>
-							<div className="mt-10 flex gap-2 text-light-blue-300">
+							<div className="mt-10 flex gap-2 text-secondary-300">
 								<LightModeIcon width={24} height={24} />
 								<Switch
 									checked={value}
@@ -145,7 +149,11 @@ const Footer: FC = () => {
 											key={id}
 											href={href}
 											target="_blank"
-											className="flex aspect-square w-9 items-center justify-center bg-gray-100 hover:bg-gray-300 dark:bg-dark-900"
+											className={cc(
+												"flex aspect-square w-9 items-center justify-center bg-background",
+												"hover:bg-neutral-300",
+												"dark:hover:bg-dark-gray-500"
+											)}
 										>
 											<Icon width={16} height={16} />
 										</Link>
@@ -157,7 +165,7 @@ const Footer: FC = () => {
 
 					<div className="mt-16 flex items-center gap-2 lg:mt-12">
 						<CopyRigthIcon width={16} height={16} />
-						<span className="text-caption text-gray-600">
+						<span className="text-caption text-neutral-600">
 							Copyright PLUS HEALTH 2024
 						</span>
 					</div>

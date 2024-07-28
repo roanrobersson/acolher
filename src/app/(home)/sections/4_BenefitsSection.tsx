@@ -3,7 +3,7 @@ import Image from "next/image";
 import CheckCircleIcon from "public/icons/solid/check-circle.svg";
 import SmartPhoneImage from "public/images/smartphone.png";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 type Item = {
 	title: string;
@@ -34,15 +34,16 @@ const BenefitsSection: FC<ComponentProps<"div">> = ({
 }) => {
 	return (
 		<section
-			className={combineClasses(
-				"mt-[100px] bg-light-blue-50 py-[60px] dark:bg-dark-gray-800",
+			className={cc(
+				"bg-secondary-100 mt-[100px] py-[60px]",
 				"lg:mt-[164px]",
+				"dark:bg-card",
 				className
 			)}
 			{...restProps}
 		>
 			<div
-				className={combineClasses(
+				className={cc(
 					"fluid-container flex flex-col",
 					"md:flex-row md:gap-[50px]"
 				)}
@@ -58,14 +59,11 @@ const BenefitsSection: FC<ComponentProps<"div">> = ({
 const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 	return (
 		<div
-			className={combineClasses(
-				"lg:flex lg:flex-col lg:justify-center",
-				className
-			)}
+			className={cc("lg:flex lg:flex-col lg:justify-center", className)}
 			{...restProps}
 		>
 			<h2
-				className={combineClasses(
+				className={cc(
 					"text-left font-clashDisplay text-display-lg",
 					"lg:text-start lg:text-display-5xl"
 				)}
@@ -76,15 +74,15 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 			<ul className="mt-[66px] flex flex-col gap-7 lg:mt-6">
 				{items.map((item) => (
 					<li
-						className={combineClasses(
+						className={cc(
 							"grid grid-cols-[min-content_auto] grid-rows-[auto_auto]",
 							"gap-x-4 gap-y-2"
 						)}
 						key={item.title}
 					>
 						<CheckCircleIcon
-							className={combineClasses(
-								"h-4 w-4 self-center text-success-400",
+							className={cc(
+								"text-success h-4 w-4 self-center",
 								"lg:h-5 lg:w-5"
 							)}
 						/>
@@ -101,10 +99,7 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 
 const ImageBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 	return (
-		<div
-			className={combineClasses("flex-shrink-0 px-3", className)}
-			{...restProps}
-		>
+		<div className={cc("flex-shrink-0 px-3", className)} {...restProps}>
 			<div className="relative mx-auto max-w-[340px] lg:max-w-none">
 				<Image
 					src={SmartPhoneImage}
@@ -116,15 +111,15 @@ const ImageBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 
 				{/* Left floating card */}
 				<div
-					className={combineClasses(
-						"absolute left-[-24px] top-0 w-[180px] rounded-md px-3 pb-4 pt-2",
-						"bg-white dark:bg-dark-900",
+					className={cc(
+						"absolute left-[-24px] top-0 w-[180px] rounded-md bg-card px-3 pb-4 pt-2",
 						"sm:top-[70px]",
-						"lg:left-[-50px] lg:w-[246px] lg:rounded-lg lg:px-5 lg:pb-7 lg:pt-4"
+						"lg:left-[-50px] lg:w-[246px] lg:rounded-lg lg:px-5 lg:pb-7 lg:pt-4",
+						"dark:bg-background"
 					)}
 				>
 					<CheckCircleIcon
-						className="h-4 w-4 text-success-400 lg:h-5 lg:w-5"
+						className="text-success h-4 w-4 lg:h-5 lg:w-5"
 						width={16}
 						height={16}
 					/>
@@ -138,15 +133,15 @@ const ImageBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 
 				{/* Right floating card */}
 				<div
-					className={combineClasses(
-						"absolute bottom-0 right-[-24px] w-[200px] rounded-md px-3 pb-4 pt-2",
-						"bg-success-50 dark:bg-dark-900",
+					className={cc(
+						"absolute bottom-0 right-[-24px] w-[200px] rounded-md bg-card px-3 pb-4 pt-2",
 						"sm:bottom-[30px]",
-						"lg:right-[-30px] lg:w-[276px] lg:rounded-lg lg:px-5 lg:pb-7 lg:pt-4"
+						"lg:right-[-30px] lg:w-[276px] lg:rounded-lg lg:px-5 lg:pb-7 lg:pt-4",
+						"dark:bg-background"
 					)}
 				>
 					<CheckCircleIcon
-						className="h-4 w-4 text-success-400 lg:h-5 lg:w-5"
+						className="text-success h-4 w-4 lg:h-5 lg:w-5"
 						width={16}
 						height={16}
 					/>

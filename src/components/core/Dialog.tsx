@@ -4,7 +4,7 @@ import { ElementRef, FC, forwardRef, HTMLAttributes } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import CloseIcon from "public/icons/outline/close.svg";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type {
 	DialogCloseProps,
@@ -33,7 +33,7 @@ const DialogTrigger = forwardRef<
 	return (
 		<DialogPrimitive.Trigger
 			ref={ref}
-			className={combineClasses("cursor-pointer", className)}
+			className={cc("cursor-pointer", className)}
 			asChild
 			{...props}
 		>
@@ -49,7 +49,7 @@ const DialogOverlay = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Overlay
 		ref={ref}
-		className={combineClasses(
+		className={cc(
 			"fixed inset-0 z-50 bg-black/80",
 			"data-[state=open]:animate-in data-[state=open]:fade-in-0",
 			"data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
@@ -68,8 +68,8 @@ const DialogContent = forwardRef<
 		<DialogOverlay />
 		<DialogPrimitive.Content
 			ref={ref}
-			className={combineClasses(
-				"fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg gap-4 border bg-white p-6 shadow-lg",
+			className={cc(
+				"fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg gap-4 border bg-background p-6 shadow-lg",
 				"translate-x-[-50%] translate-y-[-50%] duration-200 sm:rounded-lg",
 				"data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
 				"data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
@@ -79,9 +79,9 @@ const DialogContent = forwardRef<
 		>
 			{children}
 			<DialogPrimitive.Close
-				className={combineClasses(
-					"ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity",
-					"focus:ring-ring hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none",
+				className={cc(
+					"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity",
+					"hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none",
 					"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
 				)}
 			>
@@ -98,7 +98,7 @@ type DialogHeaderProps = HTMLAttributes<HTMLDivElement>;
 
 const DialogHeader: FC<DialogHeaderProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses(
+		className={cc(
 			"flex flex-col space-y-1.5 text-center sm:text-left",
 			className
 		)}
@@ -111,7 +111,7 @@ type DialogFooterProps = HTMLAttributes<HTMLDivElement>;
 
 const DialogFooter: FC<DialogFooterProps> = ({ className, ...props }) => (
 	<div
-		className={combineClasses(
+		className={cc(
 			"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
 			className
 		)}
@@ -126,7 +126,7 @@ const DialogTitle = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Title
 		ref={ref}
-		className={combineClasses(
+		className={cc(
 			"text-lg font-semibold leading-none tracking-tight",
 			className
 		)}
@@ -141,7 +141,7 @@ const DialogDescription = forwardRef<
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Description
 		ref={ref}
-		className={combineClasses("text-sm text-muted-foreground", className)}
+		className={cc("text-sm text-muted-foreground", className)}
 		{...props}
 	/>
 ));

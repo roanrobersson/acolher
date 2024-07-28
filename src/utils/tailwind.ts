@@ -31,7 +31,7 @@ export const customCva: typeof cva = (base, config) => {
 	return (props) => customTwMerge(result(props));
 };
 
-export const combineClasses = (...classes: ClassArg) => {
+export const cc = (...classes: ClassArg) => {
 	return customTwMerge(clsx(...classes));
 };
 

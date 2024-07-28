@@ -3,14 +3,14 @@ import Image from "next/image";
 import { ServiceItem } from "serviceList";
 
 import ServiceIcon from "components/ServiceIcon";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import serviceList from "../../serviceList";
 
 const OurServicesPage: FC = () => {
 	return (
 		<main>
-			<section className="bg-dark-gray-50 pt-9 lg:pt-28">
+			<section className="bg-background pt-9 lg:pt-28">
 				<div className="fluid-container flex flex-col items-center gap-10 lg:gap-28">
 					{serviceList.map((service) => (
 						<ServiceCard service={service} key={service.title} />
@@ -29,8 +29,8 @@ const ServiceCard: FC<ComponentProps<"div"> & { service: ServiceItem }> = ({
 	<div id="card-container" className="pt-[70px] sm:max-w-[600px] lg:max-w-none">
 		<div
 			id="card"
-			className={combineClasses(
-				"relative flex flex-col gap-10 rounded-3xl bg-white px-4 pb-8 dark:bg-dark-gray-800",
+			className={cc(
+				"relative flex flex-col gap-10 rounded-3xl bg-card px-4 pb-8",
 				"lg:flex-row-reverse lg:gap-20 lg:px-16 lg:py-20",
 				className
 			)}
@@ -39,7 +39,7 @@ const ServiceCard: FC<ComponentProps<"div"> & { service: ServiceItem }> = ({
 			<div id="image-container" className="h-[238px] w-full lg:w-[480px]">
 				<div
 					id="image"
-					className={combineClasses(
+					className={cc(
 						"relative top-[-70px] h-[308px]",
 						"lg:absolute lg:top-[-100px] lg:h-[460px] lg:w-[480px]"
 					)}

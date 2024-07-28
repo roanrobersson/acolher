@@ -3,20 +3,20 @@ import professionalList from "professionalList";
 
 import { ProfessionalCard } from "components";
 import { Button } from "components/core";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 const ProfessionalsSection: FC<ComponentProps<"div">> = ({
 	className,
 	...restProps
 }) => {
-	const cardsContainerClassName = combineClasses(
+	const cardsContainerClassName = cc(
 		"mt-20 gap-12 flex-wrap justify-evenly",
 		"lg:mt-14"
 	);
 
 	return (
 		<section
-			className={combineClasses("pt-[100px] lg:pt-[246px]", className)}
+			className={cc("pt-[100px] lg:pt-[246px]", className)}
 			{...restProps}
 		>
 			<div className="fluid-container flex flex-col justify-center">
@@ -24,23 +24,19 @@ const ProfessionalsSection: FC<ComponentProps<"div">> = ({
 					Meet our specialist
 				</h2>
 
-				<div
-					className={combineClasses("flex md:hidden", cardsContainerClassName)}
-				>
+				<div className={cc("flex md:hidden", cardsContainerClassName)}>
 					{professionalList.slice(0, 4).map((item) => (
 						<ProfessionalCard professional={item} key={item.name} />
 					))}
 				</div>
 
-				<div
-					className={combineClasses("hidden md:flex", cardsContainerClassName)}
-				>
+				<div className={cc("hidden md:flex", cardsContainerClassName)}>
 					{professionalList.map((item) => (
 						<ProfessionalCard professional={item} key={item.name} />
 					))}
 				</div>
 
-				<Button className="mx-10 mt-[64px]" color="secondary" size="lg">
+				<Button className="mx-10 mt-[64px]" size="lg">
 					See More
 				</Button>
 			</div>

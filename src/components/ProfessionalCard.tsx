@@ -2,7 +2,7 @@ import { ComponentProps, FC } from "react";
 import Image from "next/image";
 import { ProfessionalItem } from "professionalList";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 type ProfessionalCardProps = ComponentProps<"div"> & {
 	professional: ProfessionalItem;
@@ -14,13 +14,10 @@ const ProfessionalCard: FC<ProfessionalCardProps> = ({
 	...restProps
 }) => (
 	<div
-		className={combineClasses(
-			"group relative px-4 pb-4 text-center",
-			className
-		)}
+		className={cc("group relative px-4 pb-4 text-center", className)}
 		{...restProps}
 	>
-		<div className="absolute bottom-0 left-0 right-0 top-[60px] bg-white px-4 dark:bg-dark-gray-800" />
+		<div className="absolute bottom-0 left-0 right-0 top-[60px] bg-card px-4" />
 
 		<div className="relative">
 			<div className="relative h-[278px] w-[244px]">

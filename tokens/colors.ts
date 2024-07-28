@@ -1,150 +1,135 @@
 import type { RecursiveKeyValuePair } from "tailwindcss/types/config";
 
-const mainColors = {
+const colors = {
 	inherit: "inherit",
 	current: "currentColor",
 	transparent: "transparent",
 	white: "#ffffff",
 	black: "#000000",
 	primary: {
-		"50": "#eef2ff",
-		"100": "#dae2ff",
-		"200": "#bdccff",
-		"300": "#90acff",
-		"400": "#587dff", // main
-		"500": "#3554fc",
-		"600": "#1f31f1",
-		"700": "#171ede",
-		"800": "#191bb4",
-		"900": "#1a1e8e",
-		"950": "#151556"
+		DEFAULT: "var(--primary)",
+		"100": "var(--primary-100)",
+		"200": "var(--primary-200)",
+		"300": "var(--primary-300)",
+		"400": "var(--primary-400)",
+		"500": "var(--primary-500)",
+		"600": "var(--primary-600)",
+		"700": "var(--primary-700)",
+		"800": "var(--primary-800)",
+		"900": "var(--primary-900)",
+		foreground: "var(--primary-foreground)"
 	},
-	gray: {
-		"50": "#FAFAFA",
-		"100": "#F5F5F5",
-		"200": "#EEEEEE",
-		"300": "#E0E0E0",
-		"400": "#BDBDBD",
-		"500": "#9E9E9E",
-		"600": "#757575",
-		"700": "#616161",
-		"800": "#424242",
-		"900": "#212121"
+	secondary: {
+		DEFAULT: "var(--secondary)",
+		"100": "var(--secondary-100)",
+		"200": "var(--secondary-200)",
+		"300": "var(--secondary-300)",
+		"400": "var(--secondary-400)",
+		"500": "var(--secondary-500)",
+		"600": "var(--secondary-600)",
+		"700": "var(--secondary-700)",
+		"800": "var(--secondary-800)",
+		"900": "var(--secondary-900)",
+		foreground: "var(--secondary-foreground)"
 	},
-	dark: {
-		"50": "#f5f6fa",
-		"100": "#eaedf4",
-		"200": "#d0d8e7",
-		"300": "#a7b7d2",
-		"400": "#7890b8",
-		"500": "#5772a0",
-		"600": "#435a86",
-		"700": "#384a6c",
-		"800": "#313f5b",
-		"900": "#262f42", // main
-		"950": "#1e2433"
+	neutral: {
+		DEFAULT: "var(--neutral)",
+		"100": "var(--neutral-100)",
+		"200": "var(--neutral-200)",
+		"300": "var(--neutral-300)",
+		"400": "var(--neutral-400)",
+		"500": "var(--neutral-500)",
+		"600": "var(--neutral-600)",
+		"700": "var(--neutral-700)",
+		"800": "var(--neutral-800)",
+		"900": "var(--neutral-900)",
+		foreground: "var(--neutral-foreground)"
 	},
 	"dark-gray": {
-		"50": "#f6f7f9",
-		"100": "#eceef2",
-		"200": "#d4d8e3",
-		"300": "#afb7ca",
-		"400": "#8491ac",
-		"500": "#657392",
-		"600": "#505b79",
-		"700": "#414a63",
-		"800": "#383f52", // main
-		"900": "#333847",
-		"950": "#22252f"
+		DEFAULT: "var(--dark-gray)",
+		"100": "var(--dark-gray-100)",
+		"200": "var(--dark-gray-200)",
+		"300": "var(--dark-gray-300)",
+		"400": "var(--dark-gray-400)",
+		"500": "var(--dark-gray-500)",
+		"600": "var(--dark-gray-600)",
+		"700": "var(--dark-gray-700)",
+		"800": "var(--dark-gray-800)",
+		"900": "var(--dark-gray-900)",
+		foreground: "var(--dark-gray-foreground)"
 	},
-	"light-blue": {
-		"50": "#f1f9fe",
-		"100": "#e2f3fc",
-		"200": "#bee7f9",
-		"300": "#96daf6", // main
-		"400": "#43beed",
-		"500": "#1ba6dc",
-		"600": "#0e85bb",
-		"700": "#0c6a98",
-		"800": "#0e5a7e",
-		"900": "#124b68",
-		"950": "#0c3045"
-	},
-	blue: {
-		"50": "#eef2ff",
-		"100": "#dae2ff",
-		"200": "#bdccff",
-		"300": "#90acff",
-		"400": "#587dff", // main
-		"500": "#3554fc",
-		"600": "#1f31f1",
-		"700": "#171ede",
-		"800": "#191bb4",
-		"900": "#1a1e8e",
-		"950": "#151556"
+	"blue-gray": {
+		DEFAULT: "var(--blue-gray)",
+		"100": "var(--blue-gray-100)",
+		"200": "var(--blue-gray-200)",
+		"300": "var(--blue-gray-300)",
+		"400": "var(--blue-gray-400)",
+		"500": "var(--blue-gray-500)",
+		"600": "var(--blue-gray-600)",
+		"700": "var(--blue-gray-700)",
+		"800": "var(--blue-gray-800)",
+		"900": "var(--blue-gray-900)",
+		foreground: "var(--blue-gray-foreground)"
 	},
 	success: {
-		"50": "#edfcf3",
-		"100": "#d4f7e1",
-		"200": "#adedc8",
-		"300": "#78dda9",
-		"400": "#49c88b", // main
-		"500": "#1eab6c",
-		"600": "#118a56",
-		"700": "#0e6e48",
-		"800": "#0d583a",
-		"900": "#0c4831",
-		"950": "#06281c"
-	},
-	warning: {
-		"50": "#fef9ee",
-		"100": "#fdf2d7",
-		"200": "#fae0ae",
-		"300": "#f6c97b",
-		"400": "#f2ad51", // main
-		"500": "#ed8e22",
-		"600": "#df7417",
-		"700": "#b95915",
-		"800": "#934719",
-		"900": "#773c17",
-		"950": "#401d0a"
+		DEFAULT: "var(--success)",
+		foreground: "var(--success-foreground)"
 	},
 	danger: {
-		"50": "#fef2f2",
-		"100": "#ffe1e1",
-		"200": "#ffc9c9",
-		"300": "#fea3a3",
-		"400": "#fa5757", // main
-		"500": "#f24141",
-		"600": "#e02222",
-		"700": "#bc1919",
-		"800": "#9c1818",
-		"900": "#811b1b",
-		"950": "#460909"
+		DEFAULT: "var(--danger)",
+		foreground: "var(--danger-foreground)"
+	},
+	destructive: {
+		DEFAULT: "var(--destructive)",
+		foreground: "var(--destructive-foreground)"
+	},
+	border: "var(--border)",
+	input: "var(--input)",
+	ring: "var(--ring)",
+	background: "var(--background)",
+	foreground: "var(--foreground)",
+	muted: {
+		DEFAULT: "var(--muted)",
+		foreground: "var(--muted-foreground)"
+	},
+	accent: {
+		DEFAULT: "var(--accent)",
+		foreground: "var(--accent-foreground)"
+	},
+	popover: {
+		DEFAULT: "var(--popover)",
+		foreground: "var(--popover-foreground)"
+	},
+	card: {
+		DEFAULT: "var(--card)",
+		foreground: "var(--card-foreground)"
+	},
+	"button-primary": {
+		background: "var(--button-primary)",
+		background_hover: "var(--button-primary_hover)",
+		foreground: "var(--button-primary-foreground)",
+		foreground_hover: "var(--button-primary-foreground_hover)"
+	},
+	"button-secondary": {
+		background_hover: "var(--button-secondary_hover)",
+		border: "var(--button-secondary-border)",
+		border_hover: "var(--button-secondary-border_hover)",
+		foreground: "var(--button-secondary-foreground)",
+		foreground_hover: "var(--button-secondary-foreground_hover)"
+	},
+	"button-tertiary": {
+		background_hover: "var(--button-tertiary_hover)",
+		foreground: "var(--button-tertiary-foreground)",
+		foreground_hover: "var(--button-tertiary-foreground_hover)"
+	},
+	"button-link": {
+		background: "var(--button-link)",
+		background_hover: "var(--button-link_hover)",
+		border: "var(--button-link-border)",
+		border_hover: "var(--button-link-border_hover)",
+		foreground: "var(--button-link-foreground)",
+		foreground_hover: "var(--button-link-foreground_hover)"
 	}
 } satisfies RecursiveKeyValuePair;
-
-const semanticColors = {
-	background: "#ffffff",
-	foreground: "#191c25",
-	muted: "#e8ebf5",
-	"muted-foreground": "#BDBDBD",
-	card: "#ffffff",
-	"card-foreground": "#191c25",
-	popover: "#ffffff",
-	"popover-foreground": "#191c25",
-	border: "#d6dbe7",
-	input: "#d6dbe7",
-	"primary-foreground": "#f7faff",
-	secondary: "#e8ebf5",
-	"secondary-foreground": "#191c25",
-	accent: "#e8ebf5",
-	"accent-foreground": "#191c25",
-	destructive: "#f24141",
-	"destructive-foreground": "#f7faff",
-	ring: "#3554fc"
-} satisfies RecursiveKeyValuePair;
-
-const colors = { ...mainColors, ...semanticColors };
 
 export default colors;

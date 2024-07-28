@@ -3,16 +3,15 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type { VariantProps } from "class-variance-authority";
 
 const iconButtonVariants = cva(
 	[
 		"inline-flex items-center justify-center whitespace-nowrap rounded-lg transition-colors",
-		"focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none",
-		"disabled:pointer-events-none disabled:opacity-50",
-		"dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300"
+		"focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
+		"disabled:pointer-events-none disabled:opacity-50"
 	],
 	{
 		variants: {
@@ -38,14 +37,14 @@ const iconButtonVariants = cva(
 				variant: "solid",
 				color: "primary",
 				className: [
-					"bg-gradient-to-br from-blue-400 to-blue-500 text-white",
-					"hover:from-blue-500 hover:to-blue-600"
+					"bg-gradient-to-br from-primary-400 to-primary-500 text-white",
+					"hover:from-primary-500 hover:to-primary-600"
 				]
 			},
 			{
 				variant: "solid",
 				color: "secondary",
-				className: "bg-gray-900 hover:bg-black text-white"
+				className: "bg-neutral-900 hover:bg-black text-white"
 			},
 
 			// Outline
@@ -53,16 +52,16 @@ const iconButtonVariants = cva(
 				variant: "outline",
 				color: "primary",
 				className: [
-					"border-blue-300 text-blue-500",
-					"hover:bg-blue-100 hover:border-blue-500 hover:bg-opacity-50"
+					"border-primary-300 text-primary-500",
+					"hover:bg-primary-100 hover:border-primary-500 hover:bg-opacity-50"
 				]
 			},
 			{
 				variant: "outline",
 				color: "secondary",
 				className: [
-					"border-gray-700",
-					"hover:bg-gray-100 hover:border-gray-900  hover:bg-opacity-50"
+					"border-neutral-700",
+					"hover:bg-neutral-100 hover:border-neutral-900  hover:bg-opacity-50"
 				]
 			},
 
@@ -70,24 +69,24 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "primary",
-				className: "text-blue-500 hover:bg-blue-100 hover:bg-opacity-50"
+				className: "text-primary-500 hover:bg-primary-100 hover:bg-opacity-50"
 			},
 			{
 				variant: "ghost",
 				color: "secondary",
-				className: "text-black hover:bg-gray-200 hover:bg-opacity-50"
+				className: "text-black hover:bg-neutral-200 hover:bg-opacity-50"
 			},
 
 			// Link
 			{
 				variant: "link",
 				color: "primary",
-				className: "text-blue-500 hover:bg-blue-100 hover:bg-opacity-50"
+				className: "text-primary-500 hover:bg-primary-100 hover:bg-opacity-50"
 			},
 			{
 				variant: "link",
 				color: "secondary",
-				className: "text-black hover:bg-gray-200 hover:bg-opacity-50"
+				className: "text-black hover:bg-neutral-200 hover:bg-opacity-50"
 			}
 		],
 		defaultVariants: {
@@ -125,9 +124,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
 		return (
 			<Comp
-				className={combineClasses(
-					iconButtonVariants({ variant, size, color, className })
-				)}
+				className={cc(iconButtonVariants({ variant, size, color, className }))}
 				ref={ref}
 				{...restProps}
 			>

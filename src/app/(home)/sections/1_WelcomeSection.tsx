@@ -4,14 +4,14 @@ import TargetIcon from "public/icons/outline/target.svg";
 
 import AppointmentModal from "components/AppointmentModal";
 import { Button, Input } from "components/core";
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 const WelcomeSection: FC<ComponentProps<"div">> = ({
 	className,
 	...restProps
 }) => {
 	return (
-		<section className={combineClasses("mt-[150px]", className)} {...restProps}>
+		<section className={cc("mt-[150px]", className)} {...restProps}>
 			<div className="fluid-container">
 				<TextBlock />
 
@@ -23,19 +23,19 @@ const WelcomeSection: FC<ComponentProps<"div">> = ({
 
 const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 	return (
-		<div className={combineClasses("px-2", className)} {...restProps}>
-			<p className="text-title-lg text-black lg:text-title-4xl">
+		<div className={cc("px-2 text-neutral-900", className)} {...restProps}>
+			<p className="text-title-lg lg:text-title-4xl">
 				<span className="block">Welcome to</span> Plus Medical Center
 			</p>
 			<h1
-				className={combineClasses(
-					"mt-4 max-w-[668px] font-clashDisplay text-display-4xl !font-semibold text-black",
+				className={cc(
+					"mt-4 max-w-[668px] font-clashDisplay text-display-4xl !font-semibold",
 					"sm:max-w-[330px]",
 					"md:max-w-[390px]",
 					"lg:mt-5 lg:max-w-[720px] lg:pr-0 lg:text-display-9xl"
 				)}
 			>
-				Caring for <span className="text-blue-400">you</span> and{" "}
+				Caring for <span className="text-primary-400">you</span> and{" "}
 				<span className="text-[#FF5689]">your loved</span>
 			</h1>
 
@@ -43,8 +43,7 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 				<AppointmentModal>
 					<Button
 						className="flex-1 md:flex-initial"
-						color="primary"
-						variant="solid"
+						hierarchy="primary"
 						size="lg"
 					>
 						Make appointment
@@ -52,10 +51,12 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 				</AppointmentModal>
 
 				<Button
-					className="flex-1 md:flex-initial lg:hidden"
-					variant="outline"
+					className={cc(
+						"flex-1 md:flex-initial lg:hidden",
+						"dark:border-neutral-900 dark:text-neutral-900"
+					)}
+					hierarchy="secondary"
 					size="lg"
-					color="secondary"
 				>
 					Call us
 				</Button>
@@ -68,8 +69,8 @@ const FormBlock: FC<ComponentProps<"div">> = (props) => {
 	return (
 		<div {...props}>
 			<div
-				className={combineClasses(
-					"mt-9 rounded-2xl bg-white px-6 py-5 dark:bg-dark-gray-800",
+				className={cc(
+					"mt-9 rounded-2xl bg-card px-6 py-5",
 					"lg:mt-24 lg:px-12 lg:py-11"
 				)}
 			>
@@ -77,7 +78,12 @@ const FormBlock: FC<ComponentProps<"div">> = (props) => {
 					<h2 className="text-title-2xl md:text-nowrap">
 						Book your the Best Doctor
 					</h2>
-					<p className="text-body-sm text-gray-600 dark:text-gray-300">
+					<p
+						className={cc(
+							"text-body-sm text-neutral-600",
+							"dark:text-neutral-400"
+						)}
+					>
 						Search and find the right doctor for your medical needs, and make an
 						appointment with easy steps
 					</p>
@@ -98,7 +104,6 @@ const FormBlock: FC<ComponentProps<"div">> = (props) => {
 					/>
 					<Button
 						className="basis-[20%] lg:hidden"
-						color="primary"
 						size="lg"
 						leftIcon={<SearchIcon className="h-6 w-6" />}
 					>
@@ -106,7 +111,6 @@ const FormBlock: FC<ComponentProps<"div">> = (props) => {
 					</Button>
 					<Button
 						className="hidden basis-[20%] lg:flex"
-						color="primary"
 						size="lg"
 						leftIcon={<SearchIcon className="h-6 w-6" />}
 					>

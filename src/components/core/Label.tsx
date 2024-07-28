@@ -4,7 +4,7 @@ import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
 
-import { combineClasses } from "utils/tailwind";
+import { cc } from "utils/tailwind";
 
 import type { LabelProps as LabelPrimitiveProps } from "@radix-ui/react-label";
 import type { VariantProps } from "class-variance-authority";
@@ -21,7 +21,7 @@ const Label = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<LabelPrimitive.Root
 		ref={ref}
-		className={combineClasses(labelVariants(), className)}
+		className={cc(labelVariants(), className)}
 		{...props}
 	/>
 ));
