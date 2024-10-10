@@ -1,7 +1,7 @@
 import { ComponentProps, FC } from "react";
 import LogoSvg from "public/svg/logo.svg";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type BrandProps = ComponentProps<"div"> & {
 	onlyLogo?: boolean;

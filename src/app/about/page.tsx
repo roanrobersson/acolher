@@ -9,7 +9,7 @@ import Partner4Image from "public/images/partners/4.png";
 import XRayImage from "public/images/x-ray.png";
 
 import { Brand } from "components/layout";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const AboutPage: FC = () => {
 	return (

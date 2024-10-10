@@ -3,7 +3,7 @@ import Image from "next/image";
 import CheckCircleIcon from "public/icons/solid/check-circle.svg";
 import SmartPhoneImage from "public/images/smartphone.png";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type Item = {
 	title: string;
@@ -35,7 +35,7 @@ const BenefitsSection: FC<ComponentProps<"div">> = ({
 	return (
 		<section
 			className={cc(
-				"bg-secondary-100 mt-[100px] py-[60px]",
+				"mt-[100px] bg-secondary-100 py-[60px]",
 				"lg:mt-[164px]",
 				"dark:bg-card",
 				className
@@ -82,7 +82,7 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 					>
 						<CheckCircleIcon
 							className={cc(
-								"text-success h-4 w-4 self-center",
+								"h-4 w-4 self-center text-success",
 								"lg:h-5 lg:w-5"
 							)}
 						/>
@@ -119,7 +119,7 @@ const ImageBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 					)}
 				>
 					<CheckCircleIcon
-						className="text-success h-4 w-4 lg:h-5 lg:w-5"
+						className="h-4 w-4 text-success lg:h-5 lg:w-5"
 						width={16}
 						height={16}
 					/>
@@ -141,7 +141,7 @@ const ImageBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 					)}
 				>
 					<CheckCircleIcon
-						className="text-success h-4 w-4 lg:h-5 lg:w-5"
+						className="h-4 w-4 text-success lg:h-5 lg:w-5"
 						width={16}
 						height={16}
 					/>

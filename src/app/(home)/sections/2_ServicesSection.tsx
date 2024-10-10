@@ -2,7 +2,7 @@ import { ComponentProps, FC } from "react";
 import serviceList from "serviceList";
 
 import ServiceIcon from "components/ServiceIcon";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const ServicesSection: FC<ComponentProps<"div">> = (props) => {
 	return (

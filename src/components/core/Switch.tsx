@@ -3,7 +3,7 @@
 import { ElementRef, forwardRef } from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import type { SwitchProps } from "@radix-ui/react-switch";
 

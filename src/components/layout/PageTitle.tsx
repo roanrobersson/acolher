@@ -1,6 +1,6 @@
 import { ComponentProps, FC } from "react";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type PageTitle = ComponentProps<"div">;
 

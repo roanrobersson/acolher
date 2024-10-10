@@ -2,7 +2,7 @@ import { ComponentProps, FC } from "react";
 import Image from "next/image";
 import { ProfessionalItem } from "professionalList";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type ProfessionalCardProps = ComponentProps<"div"> & {
 	professional: ProfessionalItem;

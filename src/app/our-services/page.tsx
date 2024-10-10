@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ServiceItem } from "serviceList";
 
 import ServiceIcon from "components/ServiceIcon";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import serviceList from "../../serviceList";
 

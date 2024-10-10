@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Drawer as DrawerPrimitive } from "vaul"; // https://vaul.emilkowal.ski/
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type DrawerProps = ComponentProps<typeof DrawerPrimitive.Root>;
 

@@ -1,7 +1,7 @@
 import { ComponentProps, FC } from "react";
 import { ServiceItem } from "serviceList";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 export type ServiceIconProps = ComponentProps<"div"> & { service: ServiceItem };
 

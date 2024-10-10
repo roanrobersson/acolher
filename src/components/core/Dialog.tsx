@@ -4,7 +4,7 @@ import { ElementRef, FC, forwardRef, HTMLAttributes } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import CloseIcon from "public/icons/outline/close.svg";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import type {
 	DialogCloseProps,

@@ -3,7 +3,7 @@ import Image from "next/image";
 import MenMedicImage from "public/images/men-medic.png";
 import WomanMedicImage from "public/images/woman-medic.png";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const AboutSection: FC<ComponentProps<"div">> = ({
 	className,
@@ -50,7 +50,7 @@ const FirstBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 				</div>
 				<div
 					className={cc(
-						"bg-secondary-100 absolute bottom-0 left-[-20px] right-[-20px] z-[-1] h-[128px]",
+						"absolute bottom-0 left-[-20px] right-[-20px] z-[-1] h-[128px] bg-secondary-100",
 						"lg:h-[188px]",
 						"dark:bg-dark-gray-400"
 					)}
@@ -103,7 +103,7 @@ const SecondBlock: FC<ComponentProps<"div">> = ({
 				</div>
 				<div
 					className={cc(
-						"bg-danger absolute bottom-0 left-[20px] right-[20px] z-[-1] h-[128px]",
+						"absolute bottom-0 left-[20px] right-[20px] z-[-1] h-[128px] bg-danger",
 						"lg:h-[188px]",
 						"dark:bg-blue-gray-600"
 					)}

@@ -20,7 +20,7 @@ import {
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import { Label } from "./Label";
 

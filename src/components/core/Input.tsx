@@ -4,7 +4,7 @@ import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import useCombinedRefs from "hooks/useCombinedRefs";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 export const inputVariants = cva("", {
 	variants: {

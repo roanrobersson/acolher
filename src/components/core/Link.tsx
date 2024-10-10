@@ -3,7 +3,7 @@
 import { ComponentProps, FC } from "react";
 import NextLink from "next/link";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type LinkProps = ComponentProps<typeof NextLink> & { active?: boolean };
 

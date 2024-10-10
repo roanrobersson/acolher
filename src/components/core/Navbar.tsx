@@ -3,7 +3,7 @@
 import { ComponentProps, createContext, FC } from "react";
 
 import { useSticky } from "hooks";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type NavbarContextType = {
 	sticky: boolean;

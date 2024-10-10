@@ -3,7 +3,7 @@ import professionalList from "professionalList";
 
 import { ProfessionalCard } from "components";
 import { Button } from "components/core";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const ProfessionalsSection: FC<ComponentProps<"div">> = ({
 	className,

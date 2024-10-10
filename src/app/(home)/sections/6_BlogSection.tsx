@@ -6,7 +6,7 @@ import Image3 from "public/images/blog/3.png";
 import Image5 from "public/images/blog/5.png";
 
 import { Button, Link } from "components/core";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 type Item = {
 	title: string;

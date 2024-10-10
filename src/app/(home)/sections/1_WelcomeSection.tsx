@@ -4,7 +4,7 @@ import TargetIcon from "public/icons/outline/target.svg";
 
 import AppointmentModal from "components/AppointmentModal";
 import { Button, Input } from "components/core";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const WelcomeSection: FC<ComponentProps<"div">> = ({
 	className,

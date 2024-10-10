@@ -11,7 +11,7 @@ import {
 	SelectTrigger,
 	SelectValue
 } from "components/core";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 const ProfessionalsPage: FC = () => {
 	return (

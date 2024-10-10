@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import { Label } from "./Label";
 

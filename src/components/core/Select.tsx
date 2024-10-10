@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import type {
 	SelectContentProps,

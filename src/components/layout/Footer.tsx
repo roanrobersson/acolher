@@ -15,7 +15,7 @@ import rk from "routeKeys";
 
 import { Button, Input, Link, Switch } from "components/core";
 import { useDarkMode } from "hooks";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import Brand from "./Brand";
 

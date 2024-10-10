@@ -23,7 +23,7 @@ import {
 	RadioGroupItem,
 	Textarea
 } from "components/core";
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import {
 	Form,

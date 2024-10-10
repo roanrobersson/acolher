@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import ArtifactsImage from "public/images/artifacts.png";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import type { Metadata } from "next";
 
@@ -79,7 +79,7 @@ const ArtifactsBackground = () => (
 	<div
 		id="artifacts-background"
 		className={cc(
-			"bg-secondary-100 absolute top-0 z-[-1] flex h-[780px] w-full flex-col overflow-hidden pb-20",
+			"absolute top-0 z-[-1] flex h-[780px] w-full flex-col overflow-hidden bg-secondary-100 pb-20",
 			"lg:h-[840px]"
 		)}
 	>

@@ -4,7 +4,7 @@ import { ElementRef, forwardRef } from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import CheckCircleIcon from "public/icons/solid/check-circle.svg";
 
-import { cc } from "utils/tailwind";
+import { cc } from "utils/tailwindUtils";
 
 import type {
 	RadioGroupItemProps,
