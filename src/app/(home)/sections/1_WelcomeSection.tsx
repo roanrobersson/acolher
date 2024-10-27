@@ -2,7 +2,7 @@ import { ComponentProps, FC } from "react";
 import SearchIcon from "public/icons/outline/search.svg";
 import TargetIcon from "public/icons/outline/target.svg";
 
-import AppointmentModal from "components/AppointmentModal";
+import AppointmentDialog from "components/AppointmentDialog";
 import { Button, Input } from "components/core";
 import { cc } from "utils/tailwindUtils";
 
@@ -40,7 +40,7 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 			</h1>
 
 			<div className="mt-5 flex flex-col gap-3 sm:flex-row lg:mt-8">
-				<AppointmentModal>
+				<AppointmentDialog>
 					<Button
 						className="flex-1 md:flex-initial"
 						hierarchy="primary"
@@ -48,7 +48,7 @@ const TextBlock: FC<ComponentProps<"div">> = ({ className, ...restProps }) => {
 					>
 						Make appointment
 					</Button>
-				</AppointmentModal>
+				</AppointmentDialog>
 
 				<Button
 					className={cc(

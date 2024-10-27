@@ -43,7 +43,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 			<div
 				className={cc(
 					inputVariants({ size }),
-					"flex h-full rounded-lg border border-input bg-background px-5",
+					"flex rounded-lg border border-input bg-background px-5",
 					"focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
 					"disabled:cursor-not-allowed disabled:opacity-50",
 					{

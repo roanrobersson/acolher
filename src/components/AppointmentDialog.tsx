@@ -3,22 +3,21 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import CloseIcon from "public/icons/outline/close.svg";
 import z from "zod";
 
 import {
 	Button,
-	IconButton,
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDefaultCloseButton,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogProps,
+	DialogTitle,
+	DialogTrigger,
 	Input,
-	Modal,
-	ModalCancel,
-	ModalContent,
-	ModalDescription,
-	ModalFooter,
-	ModalHeader,
-	ModalProps,
-	ModalTitle,
-	ModalTrigger,
 	RadioGroup,
 	RadioGroupItem,
 	Textarea
@@ -34,7 +33,7 @@ import {
 	FormMessage
 } from "./core/Form";
 
-type AppointmentModalProps = ModalProps;
+type AppointmentDialogProps = DialogProps;
 
 const schema = z.object({
 	type: z.enum(["new", "returning"]),
@@ -69,7 +68,7 @@ const schema = z.object({
 
 type AppointmentFormValues = z.infer<typeof schema>;
 
-const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
+const AppointmentDialog: FC<AppointmentDialogProps> = ({ children }) => {
 	const form = useForm<AppointmentFormValues>({
 		resolver: zodResolver(schema),
 		defaultValues: {
@@ -91,26 +90,25 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 	}
 
 	return (
-		<Modal>
-			<ModalTrigger>{children}</ModalTrigger>
+		<Dialog>
+			<DialogTrigger>{children}</DialogTrigger>
 
-			<ModalContent>
-				<ModalHeader>
-					<ModalTitle className="flex items-center justify-between">
+			<DialogContent className="max-w-[1048px]">
+				<DialogDefaultCloseButton />
+				<DialogHeader>
+					<DialogTitle className="flex items-center justify-between">
 						Request an appointment
-						<ModalCancel asChild>
-							<IconButton variant="ghost" size="lg" color="secondary">
-								<CloseIcon />
-							</IconButton>
-						</ModalCancel>
-					</ModalTitle>
-					<ModalDescription>
+					</DialogTitle>
+					<DialogDescription>
 						Start your appointment request here.
-					</ModalDescription>
-				</ModalHeader>
+					</DialogDescription>
+				</DialogHeader>
 
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className="mt-4 space-y-8"
+					>
 						{/* Patient type */}
 						<FormField
 							name="type"
@@ -122,7 +120,9 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 											defaultValue={field.value}
 											className="flex justify-center gap-8 lg:gap-12"
 										>
-											<FormItem className={cc("flex items-center gap-4")}>
+											<FormItem
+												className={cc("flex items-center gap-4 space-y-0")}
+											>
 												<RadioGroupItem
 													value="new"
 													id="option-new"
@@ -131,7 +131,7 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 												<FormLabel htmlFor="option-new">New Patient</FormLabel>
 											</FormItem>
 
-											<FormItem className="flex items-center gap-4">
+											<FormItem className="flex items-center gap-4 space-y-0">
 												<RadioGroupItem
 													value="returning"
 													id="option-returning"
@@ -312,13 +312,12 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 								<FormField
 									name="message"
 									render={({ field }) => (
-										<FormItem>
+										<FormItem className="lg:col-span-2">
 											<FormLabel htmlFor="message">Message</FormLabel>
 											<FormControl>
 												<Textarea
 													id="message"
 													placeholder="Message"
-													className="col-span-2"
 													{...field}
 												/>
 											</FormControl>
@@ -329,17 +328,21 @@ const AppointmentModal: FC<AppointmentModalProps> = ({ children }) => {
 							</div>
 						</div>
 
-						<ModalFooter>
-							<ModalCancel>Cancel</ModalCancel>
+						<DialogFooter>
+							<DialogClose asChild>
+								<Button hierarchy="tertiary" size="lg">
+									Cancel
+								</Button>
+							</DialogClose>
 							<Button type="submit" size="lg">
 								Request an appointment
 							</Button>
-						</ModalFooter>
+						</DialogFooter>
 					</form>
 				</Form>
-			</ModalContent>
-		</Modal>
+			</DialogContent>
+		</Dialog>
 	);
 };
 
-export default AppointmentModal;
+export default AppointmentDialog;
