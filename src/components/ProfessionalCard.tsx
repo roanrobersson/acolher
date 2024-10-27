@@ -1,10 +1,13 @@
 import { ComponentProps, FC } from "react";
 import Image from "next/image";
 import { ProfessionalItem } from "professionalList";
+import routeKeys from "routeKeys";
 
 import { cc } from "utils/tailwindUtils";
 
-type ProfessionalCardProps = ComponentProps<"div"> & {
+import { Link } from "./core";
+
+type ProfessionalCardProps = ComponentProps<"a"> & {
 	professional: ProfessionalItem;
 };
 
@@ -13,7 +16,8 @@ const ProfessionalCard: FC<ProfessionalCardProps> = ({
 	className,
 	...restProps
 }) => (
-	<div
+	<Link
+		href={routeKeys.professional(professional.id)}
 		className={cc("group relative px-4 pb-4 text-center", className)}
 		{...restProps}
 	>
@@ -33,7 +37,7 @@ const ProfessionalCard: FC<ProfessionalCardProps> = ({
 			<h3 className="mt-4 block text-title-lg">{professional.name}</h3>
 			<p className="mt-2 text-body-md">{professional.occupation}</p>
 		</div>
-	</div>
+	</Link>
 );
 
 export default ProfessionalCard;
